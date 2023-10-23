@@ -15,14 +15,16 @@ public class CredentialsGeneratorImpl implements CredentialsGenerator {
     public CredentialsGeneratorImpl(UserDAO userDAO){
         this.userDAO = userDAO;
     }
-    private static int serial = 1;
+    private static int serial;
 
     public String generateUsername(String name, String lastname){
         String username = name + "." + lastname;
-        while(userDAO.checkUsernameExistence(username)){
-            username = username + serial;
-            serial ++;
+        serial = 1;
+        while (userDAO.usernameExistence(username)) {
+            username = name + "." + lastname + serial;
+            serial++;
         }
+        System.out.println("Created username");
         return username;
     }
 
@@ -36,6 +38,7 @@ public class CredentialsGeneratorImpl implements CredentialsGenerator {
             char randomChar = CHARACTERS.charAt(randomIndex);
             randomString.append(randomChar);
         }
+        System.out.println("Created Password");
         return randomString.toString();
     }
 }

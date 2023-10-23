@@ -24,6 +24,12 @@ public class MapStorage implements Storage {
     private Map<Integer, TrainingType> trainingTypeMap = new HashMap<>();
     private Map<Integer, User> userMap = new HashMap<>();
 
+
+    private static int nextUserId = 1;
+    private static int nextTrainingId = 1;
+    private static int nextTrainerId = 1;
+    private static int nextTraineeId = 1;
+    private static int nextTrainingTypeId = 1;
     @Autowired
     public MapStorage( @Value("${json.file.path}") String jsonFilePath) {
         this.jsonFilePath = jsonFilePath;
@@ -42,18 +48,23 @@ public class MapStorage implements Storage {
             if ("trainee".equals(type)) {
                 Trainee trainee = objectMapper.treeToValue((data), Trainee.class);
                 traineeMap.put(trainee.getID(), trainee);
+                nextTraineeId++;
             } else if ("trainer".equals(type)) {
                 Trainer trainer = objectMapper.treeToValue((data), Trainer.class);
                 trainerMap.put(trainer.getID(), trainer);
+                nextTrainerId++;
             } else if ("training".equals(type)) {
                 Training training = objectMapper.treeToValue((data), Training.class);
                 trainingMap.put(training.getid(), training);
+                nextTrainingId++;
             } else if ("trainingType".equals(type)){
                 TrainingType trainingType = objectMapper.treeToValue((data), TrainingType.class);
                 trainingTypeMap.put(trainingType.getId(), trainingType);
+                nextTrainingTypeId++;
             } else if ("user".equals(type)){
                 User user = objectMapper.treeToValue((data), User.class);
                 userMap.put(user.getId(), user);
+                nextUserId++;
             }
         }
     }
@@ -83,5 +94,23 @@ public class MapStorage implements Storage {
         return userMap;
     }
 
+    public int nextAvailableUserId() {
+        return nextUserId++;
+    }
 
+    public int nextAvailableTrainingId() {
+        return nextTrainingId++;
+    }
+
+    public int nextAvailableTrainerId() {
+        return nextTrainerId++;
+    }
+
+    public int nextAvailableTraineeId() {
+        return nextTraineeId++;
+    }
+
+    public int nextAvailableTrainingTypeId() {
+        return nextTrainingTypeId++;
+    }
 }

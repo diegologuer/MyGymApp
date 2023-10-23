@@ -1,16 +1,17 @@
 package org.spring.repository.TrainingType;
 
+import org.spring.model.Trainer;
 import org.spring.model.TrainingType;
 import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Repository
 public class TrainingTypeDAOImpl implements TrainingTypeDAO{
     Storage storage;
-    private static int id = 1;
 
     @Autowired
     public TrainingTypeDAOImpl(Storage storage){
@@ -18,36 +19,18 @@ public class TrainingTypeDAOImpl implements TrainingTypeDAO{
     }
 
     @Override
-    public void save(TrainingType trainingType) {
-
-    }
-
-    @Override
     public TrainingType getById(int id) {
-         return storage.getTrainingTypeMap().get(id);
-    }
-
-    @Override
-    public List<TrainingType> getAll() {
-        return null;
-    }
-
-    @Override
-    public TrainingType removeById(int id) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkTrainingTypeExistence(String trainingTypeName) {
-        return null;
+        System.out.println("Searching for Training Type in storage...");
+        TrainingType trainingType = storage.getTrainingTypeMap().get(id);
+        if(trainingType == null){
+            throw new NoSuchElementException("The given Specialization/Training Type id: " + id + " doesn't match with any training type in storage");
+        }
+        System.out.println("Training type found in storage");
+        return trainingType;
     }
 
     @Override
     public int nextAvailableId() {
-        var map = storage.getTrainingTypeMap();
-        while(map.containsKey(id)) {
-            id++;
-        }
-        return id;
+        return storage.nextAvailableTrainingTypeId();
     }
 }

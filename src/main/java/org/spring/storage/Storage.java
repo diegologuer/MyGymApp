@@ -10,6 +10,11 @@ public interface Storage {
     Map<Integer, Training> getTrainingMap();
     Map<Integer, TrainingType> getTrainingTypeMap();
     Map<Integer, User> getUserMap();
+    int nextAvailableUserId();
+    int nextAvailableTrainingId();
+    int nextAvailableTrainerId();
+    int nextAvailableTraineeId();
+    int nextAvailableTrainingTypeId();
 
 
 }

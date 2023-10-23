@@ -1,5 +1,6 @@
 package org.spring.repository.Trainer;
 
+import org.spring.model.Trainee;
 import org.spring.model.Trainer;
 import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Repository
 public class TrainerDAOImpl implements TrainerDAO {
     private Storage storage;
-    private static int id = 1;
 
     @Autowired
     public TrainerDAOImpl(Storage storage) {
@@ -21,42 +22,34 @@ public class TrainerDAOImpl implements TrainerDAO {
     @Override
     public int save(Trainer trainer) {
         int id = trainer.getID();
+        //Save trainer in storage
         storage.getTrainerMap().put(id, trainer);
+        System.out.println("Saving Trainer...");
+        //Check existence of previously saved trainer in the storage
         if (storage.getTrainerMap().containsKey(id)){
             //Trainer successfully saved
+            System.out.println("Trainer successfully saved with id: " + id);
             return trainer.getID();
         }
         else{
-            //-1 means error saving Trainer
-            return -1;
+            //Throws an exception in case trainee is not found
+            throw new RuntimeException("Error saving trainee");
         }
     }
 
     @Override
     public Trainer getById(int id) {
-        return storage.getTrainerMap().get(id);
-    }
-
-    @Override
-    public List<Trainer> getAll() {
-        return new ArrayList<>(storage.getTrainerMap().values());
-    }
-
-    @Override
-    public void saveAll(List<Trainer> trainers) {
-        Map<Integer, Trainer> trainerMap = storage.getTrainerMap();
-        for (Trainer trainer : trainers) {
-            trainerMap.put(trainer.getID(), trainer);
+        System.out.println("Searching for Trainer in storage...");
+        Trainer trainer = storage.getTrainerMap().get(id);
+        if(trainer == null){
+            throw new NoSuchElementException("The given id: " + id + " doesn't match with any trainer in storage");
         }
+        System.out.println("Trainer found in storage");
+        return trainer;
     }
 
     @Override
     public int nextAvailableId() {
-        var map = storage.getTraineeMap();
-        while(map.containsKey(id)) {
-            id++;
-        }
-        return id;
-
+        return storage.nextAvailableTrainerId();
     }
 }

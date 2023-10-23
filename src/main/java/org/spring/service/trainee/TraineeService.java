@@ -27,22 +27,32 @@ public class TraineeService implements TraineeServ{
     @Override
     public int createTrainee(String name, String lastname, Date dateOfBirth, String address) {
 
+        //Validate name and lastname
+        if(name == null || name.length()<3){
+            throw new IllegalArgumentException("Please enter a valid name");
+        }
+        if(lastname == null || lastname.length()<3){
+            throw new IllegalArgumentException("Please enter a valid username");
+        }
+
+        //Assigning username and password
         String username = credentialsGenerator.generateUsername(name, lastname);
         String password = credentialsGenerator.generatePassword();
+
+        //Assigning available IDs
         int traineeId = traineeDAOImpl.nextAvailableId();
         int userId = userDAOImpl.nextAvailableId();
+
+        //Saving trainee
         userDAOImpl.save(new User(userId, name, lastname,username,password, true));
+
+        //Return the ID number of the created Trainee
         return traineeDAOImpl.save(new Trainee(traineeId, dateOfBirth, address, userId));
-
-
     }
 
     @Override
     public Trainee updateTrainee(int traineeId, Date dateOfBirth, String address) {
         Trainee trainee = traineeDAOImpl.getById(traineeId);
-        if(trainee == null){
-            throw new IllegalArgumentException("Trainee with id: " + traineeId + " is not registered.");
-        }
         trainee.setAddress(address);
         trainee.setDateOfBirth(dateOfBirth);
         traineeDAOImpl.save(trainee);
@@ -51,19 +61,25 @@ public class TraineeService implements TraineeServ{
 
     @Override
     public Trainee deleteTrainee(int traineeId) {
-    Trainee trainee = traineeDAOImpl.removeById(traineeId);
-    if(trainee == null){
-        throw new IllegalArgumentException("Trainee with id: " + traineeId + " is not registered");
-    }
-    return trainee;
+        //Search for the trainee
+        Trainee trainee = traineeDAOImpl.getById(traineeId);
+
+        //Search for userId assigned to trainee
+        int userId = trainee.getUserId();
+
+        //Remove user
+        userDAOImpl.removeById(userId);
+        System.out.println("User assigned to trainee successfully deleted");
+
+        //Remove trainee
+        traineeDAOImpl.removeById(traineeId);
+        System.out.println("Trainee successfully deleted");
+        return trainee;
     }
 
     @Override
     public Trainee getTraineeById(int traineeId) {
         Trainee trainee  = traineeDAOImpl.getById(traineeId);
-        if(trainee == null){
-            throw new IllegalArgumentException("Trainee with id: " + traineeId + " is not registered");
-        }
         return trainee;
     }
 

@@ -1,17 +1,20 @@
 package org.spring.repository.user;
 
+import org.spring.model.Trainee;
 import org.spring.model.User;
 import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
 
     private Storage storage;
-    private static int id = 1;
 
     @Autowired
     public UserDAOImpl(Storage storage) {
@@ -19,31 +22,57 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void save(User user) {
-        storage.getUserMap().put(user.getId(), user);
+    public int save(User user) {
+        int id = user.getId();
+        //Save trainer in storage
+        storage.getUserMap().put(id, user);
+        System.out.println("Saving User...");
+        //Check existence of previously saved trainer in the storage
+        if (storage.getUserMap().containsKey(id)){
+            //Trainer successfully saved
+            System.out.println("User successfully saved with id: " + id);
+            return user.getId();
+        }
+        else{
+            //Throws an exception in case trainee is not found
+            throw new RuntimeException("Error saving user");
+        }
+
     }
 
     @Override
     public User getById(int id) {
-        return storage.getUserMap().get(id);
+        System.out.println("Searching for user in the storage...");
+        User user = storage.getUserMap().get(id);
+        if(user == null){
+            throw new NoSuchElementException("The given id: " + id + " doesn't match with any user in storage");
+        }
+        System.out.println("User found in storage");
+        return user;
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return new ArrayList<>(storage.getUserMap().values());
     }
 
     @Override
     public User removeById(int id) {
-        return null;
+        System.out.println("Checking for user in storage...");
+        User user = storage.getUserMap().get(id);
+        if(user == null){
+            throw new NoSuchElementException("User not found in storage");
+        }
+        System.out.println("Deleting User...");
+        storage.getUserMap().remove(id);
+        return user;
     }
 
     @Override
-    public Boolean checkUsernameExistence(String username) {
-        var map = storage.getUserMap();
-        for(Map.Entry<Integer, User> entry : map.entrySet()){
-            String json = String.valueOf(entry.getValue());
-            if (json.contains("\"username\":\"" + username + "\"")) {
+    public Boolean usernameExistence(String username) {
+        List<User> userlist = getAll();
+        for (User user : userlist) {
+            if (user.getUsername().equals(username)) {
                 return true;
             }
         }
@@ -52,10 +81,6 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public int nextAvailableId() {
-        var map = storage.getUserMap();
-        while(map.containsKey(id)) {
-            id++;
-        }
-        return id;
+        return storage.nextAvailableUserId();
     }
 }

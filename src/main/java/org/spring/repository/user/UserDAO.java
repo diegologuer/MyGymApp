@@ -5,10 +5,10 @@ import org.spring.model.User;
 import java.util.List;
 
 public interface UserDAO {
-    void save(User user);
+    int save(User user);
     User getById(int id);
     List<User> getAll();
     User removeById(int id);
-    Boolean checkUsernameExistence(String username);
+    Boolean usernameExistence(String username);
     int nextAvailableId();
 }

@@ -1,5 +1,6 @@
 package org.spring.service.training;
 
+import org.spring.model.Trainer;
 import org.spring.model.Training;
 import org.spring.repository.Trainee.TraineeDAO;
 import org.spring.repository.Trainer.TrainerDAO;
@@ -29,16 +30,26 @@ public class TrainingService implements TrainingServ {
     @Override
     public int createTraining(String trainingName, Date trainingDate, int traineeId,
                                int trainingTypeId, int trainingDuration, int trainerId) {
-        if(traineeDAO.getById(traineeId)==null){
-            throw new IllegalArgumentException("Trainee with id: " + traineeId + " is not registered");
+
+        //Validate trainingName, trainingDate and trainingDuration
+        if(trainingName == null || trainingName.length()<3){
+            throw new IllegalArgumentException("Please enter a valid training name");
         }
-        if(trainingTypeDAO.getById(trainingTypeId)==null){
-            throw new IllegalArgumentException("Training type with id: " + trainingTypeId + " is not registered");
+        if (trainingDate == null || trainingDate.before(new Date())) {
+            throw new IllegalArgumentException("Training date must be in the future.");
         }
-        if(trainerDAO.getById(trainerId)==null){
-            throw new IllegalArgumentException("Training type with id: " + trainerId + " is not registered");
+        if(trainingDuration < 10){
+            throw new IllegalArgumentException("Training duration must be at least 10 minutes ");
         }
+
+        //Checking existence of traineeId, trainingTypeId and trainerId
+        traineeDAO.getById(traineeId);
+        trainingTypeDAO.getById(trainingTypeId);
+        trainerDAO.getById(trainerId);
+
+        //Assigning available ID
         int id = trainingDAO.nextAvailableId();
+        //Return the ID number of the created Training
         return trainingDAO.save(new Training(id,trainingName,trainingDate,traineeId,trainingTypeId,trainingDuration,trainerId));
 
     }
@@ -46,14 +57,8 @@ public class TrainingService implements TrainingServ {
     @Override
     public Training getTrainingById(int trainingId) {
 
-        Training training = trainingDAO.getById(trainingId);
-
-        if(training==null){
-            throw new IllegalArgumentException("Training with id: " + trainingId + " is not registered");
-        }
-            return training;
-
-
+        Training training  = trainingDAO.getById(trainingId);
+        return training;
     }
 
 
