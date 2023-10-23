@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.Map;
 @PropertySource("classpath:application.properties")
 public class MapStorage implements Storage {
 
-    private  final String jsonFilePath;
+    private final String jsonFilePath;
     private Map<Integer, Trainee> traineeMap = new HashMap<>();
     private Map<Integer, Trainer> trainerMap = new HashMap<>();
     private Map<Integer, Training> trainingMap = new HashMap<>();
@@ -30,8 +31,9 @@ public class MapStorage implements Storage {
     private static int nextTrainerId = 1;
     private static int nextTraineeId = 1;
     private static int nextTrainingTypeId = 1;
+
     @Autowired
-    public MapStorage( @Value("${json.file.path}") String jsonFilePath) {
+    public MapStorage(@Value("${json.file.path}") String jsonFilePath) {
         this.jsonFilePath = jsonFilePath;
     }
 
@@ -57,11 +59,11 @@ public class MapStorage implements Storage {
                 Training training = objectMapper.treeToValue((data), Training.class);
                 trainingMap.put(training.getid(), training);
                 nextTrainingId++;
-            } else if ("trainingType".equals(type)){
+            } else if ("trainingType".equals(type)) {
                 TrainingType trainingType = objectMapper.treeToValue((data), TrainingType.class);
                 trainingTypeMap.put(trainingType.getId(), trainingType);
                 nextTrainingTypeId++;
-            } else if ("user".equals(type)){
+            } else if ("user".equals(type)) {
                 User user = objectMapper.treeToValue((data), User.class);
                 userMap.put(user.getId(), user);
                 nextUserId++;

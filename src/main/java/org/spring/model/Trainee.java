@@ -9,7 +9,7 @@ public class Trainee {
     private String address;
     private int userId;
 
-    public Trainee(){
+    public Trainee() {
 
     }
 
@@ -23,15 +23,19 @@ public class Trainee {
     public int getID() {
         return id;
     }
+
     public void setId(int Id) {
         this.id = Id;
     }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
+
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
     public String getAddress() {
         return address;
     }

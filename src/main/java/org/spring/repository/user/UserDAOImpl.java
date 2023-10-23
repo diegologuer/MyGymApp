@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
     private Storage storage;
 
@@ -28,12 +28,11 @@ public class UserDAOImpl implements UserDAO{
         storage.getUserMap().put(id, user);
         System.out.println("Saving User...");
         //Check existence of previously saved trainer in the storage
-        if (storage.getUserMap().containsKey(id)){
+        if (storage.getUserMap().containsKey(id)) {
             //Trainer successfully saved
             System.out.println("User successfully saved with id: " + id);
             return user.getId();
-        }
-        else{
+        } else {
             //Throws an exception in case trainee is not found
             throw new RuntimeException("Error saving user");
         }
@@ -44,7 +43,7 @@ public class UserDAOImpl implements UserDAO{
     public User getById(int id) {
         System.out.println("Searching for user in the storage...");
         User user = storage.getUserMap().get(id);
-        if(user == null){
+        if (user == null) {
             throw new NoSuchElementException("The given id: " + id + " doesn't match with any user in storage");
         }
         System.out.println("User found in storage");
@@ -52,15 +51,10 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public List<User> getAll() {
-        return new ArrayList<>(storage.getUserMap().values());
-    }
-
-    @Override
     public User removeById(int id) {
         System.out.println("Checking for user in storage...");
         User user = storage.getUserMap().get(id);
-        if(user == null){
+        if (user == null) {
             throw new NoSuchElementException("User not found in storage");
         }
         System.out.println("Deleting User...");
@@ -69,8 +63,8 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public Boolean usernameExistence(String username) {
-        List<User> userlist = getAll();
+    public Boolean usernameExists(String username) {
+        List<User> userlist = new ArrayList<>(storage.getUserMap().values());
         for (User user : userlist) {
             if (user.getUsername().equals(username)) {
                 return true;

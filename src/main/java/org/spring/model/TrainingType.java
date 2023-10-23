@@ -1,14 +1,12 @@
 package org.spring.model;
 
 
-
-
 public class TrainingType {
 
     private int id;
     private String trainingTypeName;
 
-    public TrainingType(){
+    public TrainingType() {
 
     }
 

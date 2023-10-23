@@ -11,7 +11,7 @@ public class Training {
     private int trainingDuration;
     private int trainerId;
 
-    public Training(){
+    public Training() {
 
     }
 

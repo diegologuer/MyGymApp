@@ -5,7 +5,7 @@ public class Trainer {
     private int userId;
     private int specialization;
 
-    public Trainer(){
+    public Trainer() {
 
     }
 

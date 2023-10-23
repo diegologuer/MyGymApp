@@ -1,4 +1,5 @@
 package org.spring.model;
+
 public class User {
     private int id;
     private String firstName;
@@ -7,7 +8,7 @@ public class User {
     private String password;
     private boolean isActive;
 
-    public User(){
+    public User() {
 
     }
 
