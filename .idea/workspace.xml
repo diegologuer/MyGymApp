@@ -5,36 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d710f82c-97cb-4df1-af0a-2495e934cac5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/spring/facade/FacadeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/initData/trainees.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/initData/trainers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/initData/trainingTypes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/initData/trainings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/initData/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/facade/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/facade/Facade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/Trainee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/Trainee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/Trainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/Training.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/Training.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/TrainingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/TrainingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Trainee/TraineeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainee/TraineeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Trainee/TraineeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainee/TraineeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Trainer/TrainerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainer/TrainerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Trainer/TrainerDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainer/TrainerDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Training/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/training/TrainingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/Training/TrainingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/training/TrainingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/TrainingType/TrainingTypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainingType/TrainingTypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/TrainingType/TrainingTypeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainingType/TrainingTypeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsGeneratorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeServ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerServ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingServ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/storage/MapStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/storage/MapStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/initData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/initData/initData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/initData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/spring/MyGymApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/spring/MyGymApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/spring/storage/MapStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/spring/storage/MapStorage.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +64,11 @@
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\Documents\EPAM\Training\MyGymApp\src\main\resources\initData" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="MyGymApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.spring.MyGymApp" />

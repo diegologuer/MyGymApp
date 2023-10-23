@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "trainingName": "Cardio Kickboxing Class",
+    "trainingDate": "2023-10-31",
+    "traineeId": 1,
+    "trainingTypeId": 2,
+    "trainingDuration": 60,
+    "trainerId": 1
+  },
+  {
+    "id": 2,
+    "trainingName": "Strength and Conditioning Workshop",
+    "trainingDate": "2023-11-15",
+    "traineeId": 2,
+    "trainingTypeId": 1,
+    "trainingDuration": 90,
+    "trainerId": 2
+  },
+  {
+    "id": 3,
+    "trainingName": "Yoga and Meditation Retreat",
+    "trainingDate": "2023-12-01",
+    "traineeId": 3,
+    "trainingTypeId": 5,
+    "trainingDuration": 120,
+    "trainerId": 3
+  }
+]
