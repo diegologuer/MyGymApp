@@ -1,11 +1,10 @@
 package spring.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.spring.model.User;
+
+import static org.junit.Assert.*;
 
 public class UserTest {
     private User user;
@@ -73,13 +72,13 @@ public class UserTest {
 
     @Test
     public void testGetIsActive() {
-        assertEquals(true, user.getIsActive());
+        assertTrue(user.getIsActive());
     }
 
     @Test
     public void testSetIsActive() {
         user.setIsActive(false);
-        assertEquals(false, user.getIsActive());
+        assertFalse(user.getIsActive());
     }
 
     @Test

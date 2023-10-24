@@ -6,13 +6,12 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.spring.model.Trainee;
+import org.mockito.Mockito;
 import org.spring.model.Trainer;
 import org.spring.repository.trainer.TrainerDAO;
 import org.spring.repository.trainer.TrainerDAOImpl;
 import org.spring.storage.Storage;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -38,7 +37,7 @@ public class TrainerDAOImplTest {
     @Test
     public void testGetTrainerById() {
         Trainer trainer = new Trainer(1, 4, 2);
-        when(storage.getTrainerMap()).thenReturn(mock(Map.class));
+        when(storage.getTrainerMap()).thenReturn(Mockito.<Map>mock(Map.class));
         when(storage.getTrainerMap().get(1)).thenReturn(trainer);
         Trainer result = trainerDAO.getById(1);
         assertNotNull(result);

@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 @Repository
 public class TrainerDAOImpl implements TrainerDAO {
-    private Storage storage;
+    private final Storage storage;
 
     @Autowired
     public TrainerDAOImpl(Storage storage) {

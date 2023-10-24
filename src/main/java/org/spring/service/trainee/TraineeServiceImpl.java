@@ -12,9 +12,9 @@ import java.util.Date;
 @Service
 public class TraineeServiceImpl implements TraineeService {
 
-    private TraineeDAOImpl traineeDAOImpl;
-    private CredentialsService credentialsService;
-    private UserDAOImpl userDAOImpl;
+    private final TraineeDAOImpl traineeDAOImpl;
+    private final CredentialsService credentialsService;
+    private final UserDAOImpl userDAOImpl;
 
     @Autowired
     public TraineeServiceImpl(TraineeDAOImpl traineeDAOImpl, CredentialsService credentialsService, UserDAOImpl userDAOImpl) {
@@ -84,8 +84,7 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public Trainee getTraineeById(int traineeId) {
         //Return specified trainee
-        Trainee trainee = traineeDAOImpl.getById(traineeId);
-        return trainee;
+        return traineeDAOImpl.getById(traineeId);
     }
 
 

@@ -9,18 +9,16 @@ import java.security.SecureRandom;
 @Component
 public class CredentialsServiceImpl implements CredentialsService {
 
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 
     @Autowired
     public CredentialsServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
-    private static int serial;
-
     public String generateUsername(String name, String lastname) {
         String username = name + "." + lastname;
-        serial = 1;
+        int serial = 1;
         while (userDAO.usernameExists(username)) {
             username = name + "." + lastname + serial;
             serial++;

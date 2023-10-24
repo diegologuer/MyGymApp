@@ -3,7 +3,6 @@ package spring.storage;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.junit.Assert.*;
@@ -25,7 +24,7 @@ public class MapStorageTest {
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
     @Test
     public void testGetTraineeMap() {

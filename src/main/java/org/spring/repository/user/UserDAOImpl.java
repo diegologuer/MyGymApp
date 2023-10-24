@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-    private Storage storage;
+    private final Storage storage;
 
     @Autowired
     public UserDAOImpl(Storage storage) {

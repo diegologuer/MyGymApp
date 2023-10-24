@@ -2,8 +2,6 @@ package org.spring.repository.user;
 
 import org.spring.model.User;
 
-import java.util.List;
-
 public interface UserDAO {
     int save(User user);
 

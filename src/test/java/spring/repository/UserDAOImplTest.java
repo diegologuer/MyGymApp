@@ -1,8 +1,6 @@
 package spring.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -69,7 +67,7 @@ public class UserDAOImplTest {
         boolean exists = userDAO.usernameExists("John.Doe");
         assertTrue(exists);
         boolean doesNotExist = userDAO.usernameExists("NonExistingUsername");
-        assertTrue(!doesNotExist);
+        assertFalse(doesNotExist);
     }
 
     @Test

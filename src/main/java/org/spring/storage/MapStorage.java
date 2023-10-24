@@ -1,6 +1,5 @@
 package org.spring.storage;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.spring.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,11 @@ public class MapStorage implements Storage {
     private final String trainingTypesFilePath;
     private final String usersFilePath;
 
-    private Map<Integer, Trainee> traineeMap = new HashMap<>();
-    private Map<Integer, Trainer> trainerMap = new HashMap<>();
-    private Map<Integer, Training> trainingMap = new HashMap<>();
-    private Map<Integer, TrainingType> trainingTypeMap = new HashMap<>();
-    private Map<Integer, User> userMap = new HashMap<>();
+    private final Map<Integer, Trainee> traineeMap = new HashMap<>();
+    private final Map<Integer, Trainer> trainerMap = new HashMap<>();
+    private final Map<Integer, Training> trainingMap = new HashMap<>();
+    private final Map<Integer, TrainingType> trainingTypeMap = new HashMap<>();
+    private final Map<Integer, User> userMap = new HashMap<>();
 
     private static int nextUserId = 1;
     private static int nextTrainingId = 1;

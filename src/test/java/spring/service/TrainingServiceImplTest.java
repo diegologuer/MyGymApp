@@ -67,9 +67,7 @@ public class TrainingServiceImplTest {
         when(trainingTypeDAO.getById(trainingTypeId)).thenReturn(new TrainingType(trainingTypeId, "Programming"));
         when(traineeDAO.getById(traineeId)).thenReturn(new Trainee(traineeId, new Date(), "Address", 1));
         when(trainerDAO.getById(trainerId)).thenReturn(new Trainer(trainerId, 1, 2));
-        assertThrows(IllegalArgumentException.class, () -> {
-            trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
-        });
+        assertThrows(IllegalArgumentException.class, () -> trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId));
     }
 
     @Test

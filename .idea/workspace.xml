@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d710f82c-97cb-4df1-af0a-2495e934cac5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainee/TraineeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainee/TraineeDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainer/TrainerDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainer/TrainerDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/training/TrainingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/training/TrainingDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainingType/TrainingTypeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/trainingType/TrainingTypeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/repository/user/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/profile/CredentialsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainee/TraineeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/trainer/TrainerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/service/training/TrainingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/storage/MapStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/storage/MapStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/model/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/model/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/service/CredentialsServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/service/CredentialsServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/service/TrainingServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/service/TrainingServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/storage/MapStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/storage/MapStorageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +71,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/USER/Documents/EPAM/Training/MyGymApp/src/main/resources",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/USER/Documents/EPAM/Training/MyGymApp",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -13,10 +13,10 @@ import java.util.Date;
 @Service
 public class TrainingServiceImpl implements TrainingService {
 
-    private TrainingTypeDAO trainingTypeDAO;
-    private TrainingDAO trainingDAO;
-    private TraineeDAO traineeDAO;
-    private TrainerDAO trainerDAO;
+    private final TrainingTypeDAO trainingTypeDAO;
+    private final TrainingDAO trainingDAO;
+    private final TraineeDAO traineeDAO;
+    private final TrainerDAO trainerDAO;
 
     @Autowired
     public TrainingServiceImpl(TrainingTypeDAO trainingTypeDAO, TrainingDAO trainingDAO, TraineeDAO traineeDAO, TrainerDAO trainerDAO) {
@@ -57,8 +57,7 @@ public class TrainingServiceImpl implements TrainingService {
     public Training getTrainingById(int trainingId) {
 
         //Searching for specified trainee
-        Training training = trainingDAO.getById(trainingId);
-        return training;
+        return trainingDAO.getById(trainingId);
     }
 
 

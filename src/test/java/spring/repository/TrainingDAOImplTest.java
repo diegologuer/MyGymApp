@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.spring.model.Trainee;
 import org.spring.model.Training;
 import org.spring.repository.training.TrainingDAO;
 import org.spring.repository.training.TrainingDAOImpl;

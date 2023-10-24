@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 public class TrainerServiceImpl implements TrainerService {
 
 
-    private TrainerDAOImpl trainerDAOImpl;
-    private CredentialsService credentialsService;
-    private UserDAOImpl userDAOImpl;
-    private TrainingTypeDAO trainingTypeDAO;
+    private final TrainerDAOImpl trainerDAOImpl;
+    private final CredentialsService credentialsService;
+    private final UserDAOImpl userDAOImpl;
+    private final TrainingTypeDAO trainingTypeDAO;
 
     @Autowired
     public TrainerServiceImpl(TrainerDAOImpl trainerDAOImpl, CredentialsService credentialsService,
@@ -76,8 +76,7 @@ public class TrainerServiceImpl implements TrainerService {
     @Override
     public Trainer getTrainerById(int trainerId) {
 
-        Trainer trainer = trainerDAOImpl.getById(trainerId);
-        return trainer;
+        return trainerDAOImpl.getById(trainerId);
     }
 }
 
