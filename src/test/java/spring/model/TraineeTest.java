@@ -2,6 +2,7 @@ package spring.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.spring.model.Trainee;
@@ -10,19 +11,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class TraineeTest {
     private Trainee trainee;
 
-    //Set a date of birth
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    Date DOB = sdf.parse("1990-05-20");
-
-    public TraineeTest() throws ParseException {
+    public TraineeTest() {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws ParseException {
+        //Set a date of birth
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date DOB = sdf.parse("1990-05-20");
         // Create an instance of Trainee
         trainee = new Trainee(1, DOB, "123 Gym St", 101);
     }
@@ -38,11 +37,17 @@ public class TraineeTest {
         assertEquals(2, trainee.getID());
     }
 
+    @Test
+    public void testGetDateOfBirth() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDateOfBirth = sdf.parse("1990-05-20");
+        assertEquals(newDateOfBirth, trainee.getDateOfBirth());
+    }
 
     @Test
     public void testSetDateOfBirth() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date newDateOfBirth = sdf.parse("1990-05-20");
+        Date newDateOfBirth = sdf.parse("1990-05-21");
         trainee.setDateOfBirth(newDateOfBirth);
         assertEquals(newDateOfBirth, trainee.getDateOfBirth());
     }

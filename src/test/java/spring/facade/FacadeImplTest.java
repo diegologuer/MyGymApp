@@ -1,7 +1,7 @@
 package spring.facade;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -36,7 +36,17 @@ public class FacadeImplTest {
         facade = new FacadeImpl(traineeService, trainerService, trainingService);
     }
 
+
     // Trainee methods tests
+    @Test
+    public void testCreateTrainee() {
+        int traineeId = 1;
+        Mockito.when(traineeService.createTrainee(Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString()))
+                .thenReturn(traineeId);
+        int createdTraineeId = facade.createTrainee("John", "Doe", new Date(), "Address");
+        assertEquals(traineeId, createdTraineeId);
+    }
+
     @Test
     public void testUpdateTrainee() {
         Trainee updatedTrainee = new Trainee(1, new Date(), "New Address", 1);
@@ -83,6 +93,23 @@ public class FacadeImplTest {
         Mockito.when(trainerService.getTrainerById(1)).thenReturn(trainer);
         Trainer result = facade.getTrainerById(1);
         assertEquals(trainer, result);
+    }
+
+    //Trainer test methods
+    @Test
+    public void testCreateTraining() {
+        String trainingName = "Training Name";
+        Date trainingDate = new Date();
+        int traineeId = 1;
+        int trainingTypeId = 2;
+        int trainingDuration = 3;
+        int trainerId = 4;
+        int trainingIdGenerated = 123;
+        Mockito.when(trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId))
+                .thenReturn(trainingIdGenerated);
+        int result = facade.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
+        Mockito.verify(trainingService).createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
+        assertEquals(trainingIdGenerated, result);
     }
 
     @Test

@@ -2,29 +2,55 @@ package spring.storage;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.spring.model.Trainee;
+import org.mockito.MockitoAnnotations;
 import org.spring.storage.MapStorage;
-
 import java.io.File;
-import java.util.Map;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapStorageTest {
 
+    @InjectMocks
     private MapStorage mapStorage;
 
     @Mock
     private ObjectMapper objectMapper;
 
     @Before
-    public void setUp() {
-        objectMapper = mock(ObjectMapper.class);
-        mapStorage = new MapStorage("trainees.json", "trainers.json", "trainings.json", "trainingTypes.json", "users.json");
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
+    @Test
+    public void testGetTraineeMap() {
+        assertNotNull(mapStorage.getTraineeMap());
     }
 
+    @Test
+    public void testGetTrainerMap() {
+        assertNotNull(mapStorage.getTrainerMap());
+    }
+
+    @Test
+    public void testGetTrainingMap() {
+        assertNotNull(mapStorage.getTrainingMap());
+    }
+
+    @Test
+    public void testGetTrainingTypeMap() {
+        assertNotNull(mapStorage.getTrainingTypeMap());
+    }
+
+    @Test
+    public void testGetUserMap() {
+        assertNotNull(mapStorage.getUserMap());
+    }
 
     @Test
     public void testNextAvailableUserId() {
@@ -75,4 +101,16 @@ public class MapStorageTest {
         int nextTrainingTypeId2 = mapStorage.nextAvailableTrainingTypeId();
         assertEquals(2, nextTrainingTypeId2);
     }
+    private <T> List<T> loadJsonList(String filePath, ObjectMapper objectMapper, Class<T> valueType) throws IOException {
+        File file = new File(filePath);
+        if (file.exists() && file.isFile()) {
+            return objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, valueType));
+        }
+        return new ArrayList<>();
+    }
+
+
 }
+
+
+

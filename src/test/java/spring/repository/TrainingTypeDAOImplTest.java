@@ -29,25 +29,21 @@ public class TrainingTypeDAOImplTest {
         TrainingType trainingType = new TrainingType(1, "Cardio Workout");
         when(storage.getTrainingTypeMap()).thenReturn(mock(Map.class));
         when(storage.getTrainingTypeMap().get(1)).thenReturn(trainingType);
-
         TrainingType result = trainingTypeDAO.getById(1);
-
         assertNotNull(result);
         assertEquals(trainingType, result);
     }
+
     @Test(expected = NoSuchElementException.class)
     public void testGetTrainingTypeByIdNotFound() {
         when(storage.getTrainingTypeMap()).thenReturn(mock(Map.class));
-
         trainingTypeDAO.getById(1);
     }
 
     @Test
     public void testNextAvailableId() {
         when(storage.nextAvailableTrainingTypeId()).thenReturn(1);
-
         int result = trainingTypeDAO.nextAvailableId();
-
         assertEquals(1, result);
         verify(storage).nextAvailableTrainingTypeId();
     }

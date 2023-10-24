@@ -2,10 +2,10 @@ package spring.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.spring.model.Training;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

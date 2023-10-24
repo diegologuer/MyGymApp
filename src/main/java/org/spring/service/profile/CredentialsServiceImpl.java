@@ -3,7 +3,6 @@ package org.spring.service.profile;
 import org.spring.repository.user.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.security.SecureRandom;
 
 

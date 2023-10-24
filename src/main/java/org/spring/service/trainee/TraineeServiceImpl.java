@@ -7,9 +7,7 @@ import org.spring.repository.user.UserDAOImpl;
 import org.spring.service.profile.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
-
 
 @Service
 public class TraineeServiceImpl implements TraineeService {
