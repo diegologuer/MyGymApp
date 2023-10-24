@@ -35,11 +35,16 @@ public class TrainingDAOImpl implements TrainingDAO {
 
     @Override
     public Training getById(int id) {
+        //Search for existence
         System.out.println("Searching for Training in storage...");
         Training training = storage.getTrainingMap().get(id);
+
+        //If trainee is not found throw an exception
         if (training == null) {
             throw new NoSuchElementException("The given id: " + id + " doesn't match with any training in storage");
         }
+
+        //If found, delete it
         System.out.println("Training found in storage");
         return training;
     }

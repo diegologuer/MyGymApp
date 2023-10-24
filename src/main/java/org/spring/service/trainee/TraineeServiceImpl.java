@@ -51,9 +51,14 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Override
     public Trainee updateTrainee(int traineeId, Date dateOfBirth, String address) {
+        //Check trainee existence
         Trainee trainee = traineeDAOImpl.getById(traineeId);
+
+        //Set data
         trainee.setAddress(address);
         trainee.setDateOfBirth(dateOfBirth);
+
+        //Save trainee to replace previous
         traineeDAOImpl.save(trainee);
         return trainee;
     }
@@ -78,6 +83,7 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Override
     public Trainee getTraineeById(int traineeId) {
+        //Return specified trainee
         Trainee trainee = traineeDAOImpl.getById(traineeId);
         return trainee;
     }

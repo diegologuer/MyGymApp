@@ -45,11 +45,16 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     public Trainee removeById(int id) {
+        //Search for existence
         System.out.println("Searching for trainee in the storage...");
         Trainee trainee = storage.getTraineeMap().get(id);
+
+        //If trainee is not found throw an exception
         if (trainee == null) {
             throw new NoSuchElementException("The given id: " + id + " doesn't match with any trainee in storage");
         }
+
+        //If found, delete it
         System.out.println("Deleting trainee...");
         storage.getTraineeMap().remove(id);
         return trainee;

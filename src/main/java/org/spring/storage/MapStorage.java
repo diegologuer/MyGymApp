@@ -152,25 +152,5 @@ public class MapStorage implements Storage {
         return nextTrainingTypeId++;
     }
 
-    public String getTraineesFilePath() {
-        return traineesFilePath;
-    }
-
-    public String getTrainersFilePath() {
-        return trainersFilePath;
-    }
-
-    public String getTrainingsFilePath() {
-        return trainingsFilePath;
-    }
-
-    public String getTrainingTypesFilePath() {
-        return trainingTypesFilePath;
-    }
-
-    public String getUsersFilePath() {
-        return usersFilePath;
-    }
-
 
 }

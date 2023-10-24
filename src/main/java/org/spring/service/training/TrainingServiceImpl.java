@@ -7,6 +7,7 @@ import org.spring.repository.training.TrainingDAO;
 import org.spring.repository.trainingType.TrainingTypeDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Date;
 
 @Service
@@ -55,6 +56,7 @@ public class TrainingServiceImpl implements TrainingService {
     @Override
     public Training getTrainingById(int trainingId) {
 
+        //Searching for specified trainee
         Training training = trainingDAO.getById(trainingId);
         return training;
     }
