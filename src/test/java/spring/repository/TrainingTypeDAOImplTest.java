@@ -35,7 +35,6 @@ public class TrainingTypeDAOImplTest {
         assertNotNull(result);
         assertEquals(trainingType, result);
     }
-
     @Test(expected = NoSuchElementException.class)
     public void testGetTrainingTypeByIdNotFound() {
         when(storage.getTrainingTypeMap()).thenReturn(mock(Map.class));

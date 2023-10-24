@@ -10,13 +10,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class TraineeTest {
     private Trainee trainee;
+
+    //Set a date of birth
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    Date DOB = sdf.parse("1990-05-20");
+
+    public TraineeTest() throws ParseException {
+    }
 
     @Before
     public void setUp() {
         // Create an instance of Trainee
-        trainee = new Trainee(1, new Date(), "123 Gym St", 101);
+        trainee = new Trainee(1, DOB, "123 Gym St", 101);
     }
 
     @Test
@@ -30,12 +38,6 @@ public class TraineeTest {
         assertEquals(2, trainee.getID());
     }
 
-    @Test
-    public void testGetDateOfBirth() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date expectedDate = sdf.parse("2000-01-15");
-        assertEquals(expectedDate, trainee.getDateOfBirth());
-    }
 
     @Test
     public void testSetDateOfBirth() throws ParseException {

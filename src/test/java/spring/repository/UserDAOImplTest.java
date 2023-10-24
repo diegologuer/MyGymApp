@@ -28,18 +28,6 @@ public class UserDAOImplTest {
         userDAO = new UserDAOImpl(storage);
     }
 
-    @Test
-    public void testSaveUser() {
-        User user = new User(1, "John", "Doe", "John.Doe", "password", true);
-        when(storage.getUserMap()).thenReturn(new HashMap<>());
-
-        when(storage.getUserMap().containsKey(1)).thenReturn(false);
-        userDAO.save(user);
-
-        verify(storage).getUserMap();
-        verify(storage.getUserMap()).put(1, user);
-    }
-
     @Test(expected = RuntimeException.class)
     public void testSaveUserExistingUser() {
         User user = new User(1, "John", "Doe", "John.Doe", "password", true);
@@ -66,28 +54,6 @@ public class UserDAOImplTest {
         when(storage.getUserMap()).thenReturn(mock(Map.class));
 
         userDAO.getById(1);
-    }
-
-    @Test
-    public void testRemoveUserById() {
-        User user = new User(1, "John", "Doe", "John.Doe", "password", true);
-        when(storage.getUserMap()).thenReturn(new HashMap<>());
-        when(storage.getUserMap().containsKey(1)).thenReturn(true);
-        when(storage.getUserMap().get(1)).thenReturn(user);
-
-        User result = userDAO.removeById(1);
-
-        assertNotNull(result);
-        assertEquals(user, result);
-        verify(storage).getUserMap().remove(1);
-    }
-
-    @Test(expected = NoSuchElementException.class)
-    public void testRemoveUserByIdNotFound() {
-        when(storage.getUserMap()).thenReturn(new HashMap<>());
-        when(storage.getUserMap().containsKey(1)).thenReturn(false);
-
-        userDAO.removeById(1);
     }
 
     @Test

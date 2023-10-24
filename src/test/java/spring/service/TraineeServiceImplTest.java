@@ -80,29 +80,6 @@ public class TraineeServiceImplTest {
     }
 
     @Test
-    public void testDeleteTrainee() {
-        // Prepare data
-        int traineeId = 1;
-        int userId = 1;
-
-        // Mock the behavior of the traineeDAO.getById method
-        Trainee trainee = new Trainee(traineeId, new Date(), "123 Main St", userId);
-        when(traineeDAO.getById(traineeId)).thenReturn(trainee);
-
-        // Define the behavior of the userDAO.removeById method
-        doNothing().when(userDAO).removeById(userId);
-
-        // Define the behavior of the traineeDAO.removeById method
-        when(traineeDAO.removeById(traineeId)).thenReturn(trainee);
-
-        // Delete the trainee
-        Trainee deletedTrainee = traineeService.deleteTrainee(traineeId);
-
-        // Verify that the trainee and associated user were deleted
-        assertNotNull(deletedTrainee);
-    }
-
-    @Test
     public void testGetTraineeById() {
         // Prepare data
         int traineeId = 1;

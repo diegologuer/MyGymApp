@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d710f82c-97cb-4df1-af0a-2495e934cac5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/facade/FacadeImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TraineeDAOImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingTypeDAOImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/CredentialsServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TraineeServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TrainerServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TrainingServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/storage/MapStorageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTypeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTypeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/UserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/facade/FacadeImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/facade/FacadeImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/model/TraineeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/model/TraineeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/model/TrainingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/model/TrainingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TraineeDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TraineeDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingTypeDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingTypeDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/spring/service/TraineeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/spring/service/TraineeServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/spring/MyGymApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/spring/MyGymApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/facade/FacadeImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/facade/FacadeImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/TraineeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/TraineeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/repository/TraineeDAOImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/repository/TraineeDAOImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainerDAOImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainerDAOImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainingDAOImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainingDAOImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainingTypeDAOImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/repository/TrainingTypeDAOImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/repository/UserDAOImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/repository/UserDAOImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/service/TraineeServiceImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/service/TraineeServiceImplTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,16 +81,18 @@
       <recent name="C:\Users\USER\Documents\EPAM\Training\MyGymApp\src\main\resources\initData" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyGymApp">
-    <configuration name="MyGymApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.spring.MyGymApp" />
+  <component name="RunManager" selected="JUnit.MapStorageTest">
+    <configuration name="CredentialsServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SpringCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.spring.*" />
+          <option name="PATTERN" value="spring.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="spring.service" />
+      <option name="MAIN_CLASS_NAME" value="spring.service.CredentialsServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,6 +107,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="spring.storage" />
       <option name="MAIN_CLASS_NAME" value="spring.storage.MapStorageTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TraineeServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringCore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring.service" />
+      <option name="MAIN_CLASS_NAME" value="spring.service.TraineeServiceImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,21 +157,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TrainingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringCore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="spring.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="spring.model" />
-      <option name="MAIN_CLASS_NAME" value="spring.model.TrainingTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="MyGymApp" />
       <method v="2">
@@ -164,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyGymApp" />
-        <item itemvalue="JUnit.TrainingTest" />
         <item itemvalue="JUnit.MapStorageTest" />
         <item itemvalue="JUnit.TrainingServiceImplTest" />
         <item itemvalue="JUnit.TrainerServiceImplTest" />
+        <item itemvalue="JUnit.TraineeServiceImplTest" />
+        <item itemvalue="JUnit.CredentialsServiceImplTest" />
       </list>
     </recent_temporary>
   </component>

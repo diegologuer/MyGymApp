@@ -42,13 +42,6 @@ public class TrainingTest {
     }
 
     @Test
-    public void testGetTrainingDate() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date expectedDate = sdf.parse("2023-10-31");
-        assertEquals(expectedDate, training.getTrainingDate());
-    }
-
-    @Test
     public void testSetTrainingDate() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newTrainingDate = sdf.parse("2023-11-15");

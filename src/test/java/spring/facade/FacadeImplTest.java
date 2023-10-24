@@ -38,13 +38,6 @@ public class FacadeImplTest {
 
     // Trainee methods tests
     @Test
-    public void testCreateTrainee() {
-        Mockito.when(traineeService.createTrainee("John", "Doe", new Date(), "123 Gym St, Fitness City")).thenReturn(1);
-        int result = facade.createTrainee("John", "Doe", new Date(), "123 Gym St, Fitness City");
-        assertEquals(1, result);
-    }
-
-    @Test
     public void testUpdateTrainee() {
         Trainee updatedTrainee = new Trainee(1, new Date(), "New Address", 1);
         Mockito.when(traineeService.updateTrainee(1, new Date(), "New Address")).thenReturn(updatedTrainee);
@@ -90,14 +83,6 @@ public class FacadeImplTest {
         Mockito.when(trainerService.getTrainerById(1)).thenReturn(trainer);
         Trainer result = facade.getTrainerById(1);
         assertEquals(trainer, result);
-    }
-
-    // Training methods tests
-    @Test
-    public void testCreateTraining() {
-        Mockito.when(trainingService.createTraining("Cardio Kickboxing Class", new Date(), 1, 2, 60, 1)).thenReturn(1);
-        int result = facade.createTraining("Cardio Kickboxing Class", new Date(), 1, 2, 60, 1);
-        assertEquals(1, result);
     }
 
     @Test

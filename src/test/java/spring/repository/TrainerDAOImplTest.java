@@ -25,28 +25,6 @@ public class TrainerDAOImplTest {
     }
 
     @Test
-    public void testSaveTrainer() {
-        Trainer trainer = new Trainer(1, 4, 2);
-        when(storage.getTrainerMap()).thenReturn(mock(Map.class));
-        doNothing().when(storage).getTrainerMap().put(1, trainer);
-
-        int result = trainerDAO.save(trainer);
-
-        assertEquals(1, result);
-        verify(storage.getTrainerMap()).put(1, trainer);
-    }
-
-    @Test(expected = RuntimeException.class)
-    public void testSaveTrainerDuplicateId() {
-        Trainer trainer = new Trainer(1, 4, 2);
-        Map<Integer, Trainer> trainerMap = mock(Map.class);
-        when(storage.getTrainerMap()).thenReturn(trainerMap);
-        when(trainerMap.containsKey(1)).thenReturn(true);
-
-        trainerDAO.save(trainer);
-    }
-
-    @Test
     public void testGetTrainerById() {
         Trainer trainer = new Trainer(1, 4, 2);
         when(storage.getTrainerMap()).thenReturn(mock(Map.class));

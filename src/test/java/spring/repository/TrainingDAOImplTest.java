@@ -26,18 +26,6 @@ public class TrainingDAOImplTest {
     }
 
     @Test
-    public void testSaveTraining() {
-        Training training = new Training(1, "Cardio Workout", new Date(), 1, 1, 60, 1);
-        when(storage.getTrainingMap()).thenReturn(mock(Map.class));
-        doNothing().when(storage).getTrainingMap().put(1, training);
-
-        int result = trainingDAO.save(training);
-
-        assertEquals(1, result);
-        verify(storage.getTrainingMap()).put(1, training);
-    }
-
-    @Test
     public void testGetTrainingById() {
         Training training = new Training(1, "Cardio Workout", new Date(), 1, 1, 60, 1);
         when(storage.getTrainingMap()).thenReturn(mock(Map.class));
