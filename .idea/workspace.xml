@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d710f82c-97cb-4df1-af0a-2495e934cac5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/model/TraineeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/model/TrainerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/model/TrainingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/model/TrainingTypeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/spring/model/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/facade/FacadeImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TraineeDAOImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainerDAOImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingDAOImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/TrainingTypeDAOImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/repository/UserDAOImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/CredentialsServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TraineeServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TrainerServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/service/TrainingServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/spring/storage/MapStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/MyGymApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/TrainingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/TrainingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/spring/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/spring/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTypeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/TrainingTypeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/spring/model/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/spring/model/UserTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,16 +89,46 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TraineeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MapStorageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SpringCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="spring.model.*" />
+          <option name="PATTERN" value="spring.storage.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="spring.model" />
-      <option name="MAIN_CLASS_NAME" value="spring.model.TraineeTest" />
+      <option name="PACKAGE_NAME" value="spring.storage" />
+      <option name="MAIN_CLASS_NAME" value="spring.storage.MapStorageTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrainerServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringCore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring.service" />
+      <option name="MAIN_CLASS_NAME" value="spring.service.TrainerServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrainingServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringCore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring.service" />
+      <option name="MAIN_CLASS_NAME" value="spring.service.TrainingServiceImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -108,36 +144,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="spring.model" />
       <option name="MAIN_CLASS_NAME" value="spring.model.TrainingTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TrainingTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringCore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="spring.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="spring.model" />
-      <option name="MAIN_CLASS_NAME" value="spring.model.TrainingTypeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringCore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="spring.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="spring.model" />
-      <option name="MAIN_CLASS_NAME" value="spring.model.UserTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -159,10 +165,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MyGymApp" />
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.TrainingTypeTest" />
         <item itemvalue="JUnit.TrainingTest" />
-        <item itemvalue="JUnit.TraineeTest" />
+        <item itemvalue="JUnit.MapStorageTest" />
+        <item itemvalue="JUnit.TrainingServiceImplTest" />
+        <item itemvalue="JUnit.TrainerServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
