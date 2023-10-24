@@ -30,4 +30,12 @@ public class TrainingType {
     public void setTrainingTypeName(String trainingTypeName) {
         this.trainingTypeName = trainingTypeName;
     }
+
+    @Override
+    public String toString() {
+        return "TrainingType{" +
+                "id=" + id +
+                ", trainingTypeName='" + trainingTypeName + '\'' +
+                '}';
+    }
 }

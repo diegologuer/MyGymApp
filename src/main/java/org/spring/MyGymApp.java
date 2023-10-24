@@ -10,7 +10,7 @@ public class MyGymApp {
 
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
         var a = context.getBean(FacadeImpl.class);
-        a.createTrainer("Juan", "OKOK", 3);
+        a.createTrainer("Diego", "Lopez", 2);
 
 
     }
