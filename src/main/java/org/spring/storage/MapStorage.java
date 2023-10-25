@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Component
 @PropertySource("classpath:application.properties")
@@ -37,6 +38,8 @@ public class MapStorage implements Storage {
     private static int nextTraineeId = 1;
     private static int nextTrainingTypeId = 1;
 
+    private static final Logger logger = Logger.getLogger(MapStorage.class.getName());
+
     @Autowired
     public MapStorage(@Value("${trainees.data.source}") String traineesFilePath, @Value("${trainers.data.source}") String trainersFilePath,
                       @Value("${trainings.data.path}") String trainingsFilePath, @Value("${trainingTypes.data.source}") String trainingTypesFilePath,
@@ -52,6 +55,7 @@ public class MapStorage implements Storage {
     public void initializeStorageFromJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
+        logger.info("Initializing Storage...");
         // Load and map Trainee objects from the JSON file
         List<Trainee> trainees = loadJsonList(traineesFilePath, objectMapper, Trainee.class);
         for (Trainee trainee : trainees) {
@@ -96,6 +100,7 @@ public class MapStorage implements Storage {
                 nextUserId = user.getId() + 1;
             }
         }
+        logger.info("Storage initialized");
     }
 
     // Method to load and deserialize a JSON file into a list of objects
@@ -106,28 +111,34 @@ public class MapStorage implements Storage {
         }
         return new ArrayList<>();
     }
+
     @Override
     public Map<Integer, Trainee> getTraineeMap() {
+        logger.info("Retrieving traineeMap");
         return traineeMap;
     }
 
     @Override
     public Map<Integer, Trainer> getTrainerMap() {
+        logger.info("Retrieving trainerMap");
         return trainerMap;
     }
 
     @Override
     public Map<Integer, Training> getTrainingMap() {
+        logger.info("Retrieving trainingMap");
         return trainingMap;
     }
 
     @Override
     public Map<Integer, TrainingType> getTrainingTypeMap() {
+        logger.info("Retrieving trainingTypeMap");
         return trainingTypeMap;
     }
 
     @Override
     public Map<Integer, User> getUserMap() {
+        logger.info("Retrieving userMap");
         return userMap;
     }
 

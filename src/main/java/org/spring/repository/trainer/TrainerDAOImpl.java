@@ -5,10 +5,12 @@ import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 @Repository
 public class TrainerDAOImpl implements TrainerDAO {
     private final Storage storage;
+    private static final Logger logger = Logger.getLogger(TrainerDAOImpl.class.getName());
 
     @Autowired
     public TrainerDAOImpl(Storage storage) {
@@ -20,11 +22,11 @@ public class TrainerDAOImpl implements TrainerDAO {
         int id = trainer.getID();
         //Save trainer in storage
         storage.getTrainerMap().put(id, trainer);
-        System.out.println("Saving Trainer...");
+        logger.info("Saving Trainer...");
         //Check existence of previously saved trainer in the storage
         if (storage.getTrainerMap().containsKey(id)) {
             //Trainer successfully saved
-            System.out.println("Trainer successfully saved with id: " + id);
+            logger.info("Trainer successfully saved with id: " + id);
             return trainer.getID();
         } else {
             //Throws an exception in case trainee is not found
@@ -35,7 +37,7 @@ public class TrainerDAOImpl implements TrainerDAO {
     @Override
     public Trainer getById(int id) {
         //Search for existence
-        System.out.println("Searching for Trainer in storage...");
+        logger.info("Searching for Trainer in storage...");
         Trainer trainer = storage.getTrainerMap().get(id);
 
         //If trainee is not found throw an exception
@@ -44,12 +46,14 @@ public class TrainerDAOImpl implements TrainerDAO {
         }
 
         //If found, delete it
-        System.out.println("Trainer found in storage");
+        logger.info("Trainer found in storage");
         return trainer;
     }
 
     @Override
+
     public int nextAvailableId() {
+        logger.info("Obtaining next available Id");
         return storage.nextAvailableTrainerId();
     }
 }

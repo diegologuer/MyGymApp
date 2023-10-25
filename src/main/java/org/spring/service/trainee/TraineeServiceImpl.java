@@ -8,6 +8,7 @@ import org.spring.service.profile.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
+import java.util.logging.Logger;
 
 @Service
 public class TraineeServiceImpl implements TraineeService {
@@ -15,6 +16,7 @@ public class TraineeServiceImpl implements TraineeService {
     private final TraineeDAOImpl traineeDAOImpl;
     private final CredentialsService credentialsService;
     private final UserDAOImpl userDAOImpl;
+    private static final Logger logger = Logger.getLogger(TraineeServiceImpl.class.getName());
 
     @Autowired
     public TraineeServiceImpl(TraineeDAOImpl traineeDAOImpl, CredentialsService credentialsService, UserDAOImpl userDAOImpl) {
@@ -26,6 +28,7 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public int createTrainee(String name, String lastname, Date dateOfBirth, String address) {
 
+        logger.info("Validating arguments...");
         //Validate name and lastname
         if (name == null || name.length() < 3) {
             throw new IllegalArgumentException("Please enter a valid name");
@@ -34,6 +37,7 @@ public class TraineeServiceImpl implements TraineeService {
             throw new IllegalArgumentException("Please enter a valid username");
         }
 
+        logger.info("Assigning credentials...");
         //Assigning username and password
         String username = credentialsService.generateUsername(name, lastname);
         String password = credentialsService.generatePassword();
@@ -51,15 +55,18 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Override
     public Trainee updateTrainee(int traineeId, Date dateOfBirth, String address) {
+
         //Check trainee existence
         Trainee trainee = traineeDAOImpl.getById(traineeId);
 
+        logger.info("Setting new data...");
         //Set data
         trainee.setAddress(address);
         trainee.setDateOfBirth(dateOfBirth);
 
         //Save trainee to replace previous
         traineeDAOImpl.save(trainee);
+        logger.info("Trainee updated");
         return trainee;
     }
 
@@ -73,19 +80,18 @@ public class TraineeServiceImpl implements TraineeService {
 
         //Remove user
         userDAOImpl.removeById(userId);
-        System.out.println("User assigned to trainee successfully deleted");
+        logger.info("User assigned to trainee successfully deleted");
 
         //Remove trainee
         traineeDAOImpl.removeById(traineeId);
-        System.out.println("Trainee successfully deleted");
+        logger.info("Trainee successfully deleted");
         return trainee;
     }
 
     @Override
     public Trainee getTraineeById(int traineeId) {
         //Return specified trainee
+        logger.info("Trainee redeemed");
         return traineeDAOImpl.getById(traineeId);
     }
-
-
 }

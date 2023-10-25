@@ -4,11 +4,14 @@ import org.spring.model.Training;
 import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 @Repository
 public class TrainingDAOImpl implements TrainingDAO {
     private final Storage storage;
+    private static final Logger logger = Logger.getLogger(TrainingDAOImpl.class.getName());
 
     @Autowired
     public TrainingDAOImpl(Storage storage) {
@@ -20,15 +23,15 @@ public class TrainingDAOImpl implements TrainingDAO {
         int id = training.getid();
         //Save training in storage
         storage.getTrainingMap().put(id, training);
-        System.out.println("Saving Training...");
+        logger.info("Saving Training...");
         //Check existence of previously saved training in the storage
         if (storage.getTrainingMap().containsKey(id)) {
             //Training successfully saved
-            System.out.println("Training successfully saved with id: " + id);
+            logger.info("Training successfully saved with id: " + id);
             return training.getid();
         } else {
             //-1 means error saving Training
-            System.out.println("Error saving Training");
+            logger.info("Error saving Training");
             return -1;
         }
     }
@@ -36,7 +39,7 @@ public class TrainingDAOImpl implements TrainingDAO {
     @Override
     public Training getById(int id) {
         //Search for existence
-        System.out.println("Searching for Training in storage...");
+        logger.info("Searching for Training in storage...");
         Training training = storage.getTrainingMap().get(id);
 
         //If trainee is not found throw an exception
@@ -45,12 +48,13 @@ public class TrainingDAOImpl implements TrainingDAO {
         }
 
         //If found, delete it
-        System.out.println("Training found in storage");
+        logger.info("Training found in storage");
         return training;
     }
 
     @Override
     public int nextAvailableId() {
+        logger.info("Obtaining next available Id");
         return storage.nextAvailableTrainingId();
     }
 }

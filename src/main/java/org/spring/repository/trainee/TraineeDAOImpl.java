@@ -5,10 +5,12 @@ import org.spring.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 @Repository
 public class TraineeDAOImpl implements TraineeDAO {
     private final Storage storage;
+    private static final Logger logger = Logger.getLogger(TraineeDAOImpl.class.getName());
 
     @Autowired
     public TraineeDAOImpl(Storage storage) {
@@ -20,11 +22,11 @@ public class TraineeDAOImpl implements TraineeDAO {
         int id = trainee.getID();
         //Save trainee in storage
         storage.getTraineeMap().put(id, trainee);
-        System.out.println("Saving Trainee...");
+        logger.info("Saving Trainee...");
         //Check existence of previously saved trainee in the storage
         if (storage.getTraineeMap().containsKey(id)) {
             //Trainee successfully saved
-            System.out.println("Trainee successfully saved with id: " + id);
+            logger.info("Trainee successfully saved with id: " + id);
             return trainee.getID();
         } else {
             //Throws an exception in case trainee is not found
@@ -34,19 +36,19 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     public Trainee getById(int id) {
-        System.out.println("Searching for trainee in the storage...");
+        logger.info("Searching for trainee in the storage...");
         Trainee trainee = storage.getTraineeMap().get(id);
         if (trainee == null) {
             throw new NoSuchElementException("The given id: " + id + " doesn't match with any trainee in storage");
         }
-        System.out.println("Trainee found in storage");
+        logger.info("Trainee found in storage");
         return trainee;
     }
 
     @Override
     public Trainee removeById(int id) {
         //Search for existence
-        System.out.println("Searching for trainee in the storage...");
+        logger.info("Searching for trainee in the storage...");
         Trainee trainee = storage.getTraineeMap().get(id);
 
         //If trainee is not found throw an exception
@@ -55,13 +57,15 @@ public class TraineeDAOImpl implements TraineeDAO {
         }
 
         //If found, delete it
-        System.out.println("Deleting trainee...");
+        logger.info("Deleting trainee...");
         storage.getTraineeMap().remove(id);
         return trainee;
     }
 
     @Override
+
     public int nextAvailableId() {
+        logger.info("Obtaining next available Id");
         return storage.nextAvailableTraineeId();
     }
 }

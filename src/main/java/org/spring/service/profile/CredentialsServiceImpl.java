@@ -4,12 +4,14 @@ import org.spring.repository.user.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.security.SecureRandom;
+import java.util.logging.Logger;
 
 
 @Component
 public class CredentialsServiceImpl implements CredentialsService {
 
     private final UserDAO userDAO;
+    private static final Logger logger = Logger.getLogger(CredentialsServiceImpl.class.getName());
 
     @Autowired
     public CredentialsServiceImpl(UserDAO userDAO) {
@@ -23,7 +25,7 @@ public class CredentialsServiceImpl implements CredentialsService {
             username = name + "." + lastname + serial;
             serial++;
         }
-        System.out.println("Created username: " + username);
+        logger.info("Created username: " + username);
         return username;
     }
 
@@ -37,7 +39,7 @@ public class CredentialsServiceImpl implements CredentialsService {
             char randomChar = CHARACTERS.charAt(randomIndex);
             randomString.append(randomChar);
         }
-        System.out.println("Created Password");
+        logger.info("Created Password");
         return randomString.toString();
     }
 }

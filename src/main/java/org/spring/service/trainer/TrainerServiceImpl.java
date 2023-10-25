@@ -10,6 +10,8 @@ import org.spring.service.profile.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Logger;
+
 @Service
 public class TrainerServiceImpl implements TrainerService {
 
@@ -18,6 +20,7 @@ public class TrainerServiceImpl implements TrainerService {
     private final CredentialsService credentialsService;
     private final UserDAOImpl userDAOImpl;
     private final TrainingTypeDAO trainingTypeDAO;
+    private static final Logger logger = Logger.getLogger(TrainerServiceImpl.class.getName());
 
     @Autowired
     public TrainerServiceImpl(TrainerDAOImpl trainerDAOImpl, CredentialsService credentialsService,
@@ -31,6 +34,7 @@ public class TrainerServiceImpl implements TrainerService {
     @Override
     public int createTrainer(String name, String lastname, int specialization) {
 
+        logger.info("Validating arguments...");
         //Validate name and lastname
         if (name == null || name.length() < 3) {
             throw new IllegalArgumentException("Please enter a valid name");
@@ -41,6 +45,7 @@ public class TrainerServiceImpl implements TrainerService {
         //Check specialization id existence
         trainingTypeDAO.getById(specialization);
 
+        logger.info("Assigning credentials...");
         //Assigning username and password
         String username = credentialsService.generateUsername(name, lastname);
         String password = credentialsService.generatePassword();
@@ -65,17 +70,20 @@ public class TrainerServiceImpl implements TrainerService {
         //Search fot trainer
         Trainer trainer = trainerDAOImpl.getById(trainerId);
 
+        logger.info("Setting new data...");
         //Set new specialization
         trainer.setSpecialization(specialization);
 
         //Save trainer
         trainerDAOImpl.save(trainer);
+        logger.info("Trainee updated");
         return trainer;
     }
 
     @Override
     public Trainer getTrainerById(int trainerId) {
 
+        logger.info("Trainee redeemed");
         return trainerDAOImpl.getById(trainerId);
     }
 }

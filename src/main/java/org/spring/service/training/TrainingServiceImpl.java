@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 @Service
 public class TrainingServiceImpl implements TrainingService {
@@ -17,6 +18,7 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingDAO trainingDAO;
     private final TraineeDAO traineeDAO;
     private final TrainerDAO trainerDAO;
+    private static final Logger logger = Logger.getLogger(TrainingServiceImpl.class.getName());
 
     @Autowired
     public TrainingServiceImpl(TrainingTypeDAO trainingTypeDAO, TrainingDAO trainingDAO, TraineeDAO traineeDAO, TrainerDAO trainerDAO) {
@@ -30,6 +32,7 @@ public class TrainingServiceImpl implements TrainingService {
     public int createTraining(String trainingName, Date trainingDate, int traineeId,
                               int trainingTypeId, int trainingDuration, int trainerId) {
 
+        logger.info("Validating arguments...");
         //Validate trainingName, trainingDate and trainingDuration
         if (trainingName == null || trainingName.length() < 3) {
             throw new IllegalArgumentException("Please enter a valid training name");
@@ -46,6 +49,7 @@ public class TrainingServiceImpl implements TrainingService {
         trainingTypeDAO.getById(trainingTypeId);
         trainerDAO.getById(trainerId);
 
+        logger.info("Assigning credentials...");
         //Assigning available ID
         int id = trainingDAO.nextAvailableId();
         //Return the ID number of the created Training
@@ -56,6 +60,7 @@ public class TrainingServiceImpl implements TrainingService {
     @Override
     public Training getTrainingById(int trainingId) {
 
+        logger.info("Trainee redeemed");
         //Searching for specified trainee
         return trainingDAO.getById(trainingId);
     }
