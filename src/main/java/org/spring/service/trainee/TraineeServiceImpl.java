@@ -1,7 +1,6 @@
 package org.spring.service.trainee;
 
 import org.spring.model.Trainee;
-import org.spring.model.User;
 import org.spring.repository.trainee.TraineeDAOImpl;
 import org.spring.repository.user.UserDAOImpl;
 import org.spring.service.profile.CredentialsService;

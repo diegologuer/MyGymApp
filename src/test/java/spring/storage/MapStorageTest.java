@@ -3,11 +3,9 @@ package spring.storage;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import static org.junit.Assert.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mockito.MockitoAnnotations;
 import org.spring.model.*;
 import org.spring.storage.MapStorage;
@@ -17,10 +15,7 @@ import java.util.Map;
 public class MapStorageTest {
 
     @InjectMocks
-    private MapStorage mapStorage;
-
-    @Mock
-    private ObjectMapper objectMapper;
+    private MapStorage systemUnderTest;
 
     @Before
     public void init() {
@@ -31,105 +26,105 @@ public class MapStorageTest {
     @Test
     public void testGetTraineeMap() {
         // Act
-        Map<Integer, Trainee> traineeMap = mapStorage.getTraineeMap();
+        Map<Integer, Trainee> actualTraineeMap = systemUnderTest.getTraineeMap();
 
         // Assert
-        assertNotNull(traineeMap);
+        assertNotNull(actualTraineeMap);
     }
 
     @Test
     public void testGetTrainerMap() {
         // Act
-        Map<Integer, Trainer> trainerMap = mapStorage.getTrainerMap();
+        Map<Integer, Trainer> actualTrainerMap = systemUnderTest.getTrainerMap();
 
         // Assert
-        assertNotNull(trainerMap);
+        assertNotNull(actualTrainerMap);
     }
 
     @Test
     public void testGetTrainingMap() {
         // Act
-        Map<Integer, Training> trainingMap = mapStorage.getTrainingMap();
+        Map<Integer, Training> actualTrainingMap = systemUnderTest.getTrainingMap();
 
         // Assert
-        assertNotNull(trainingMap);
+        assertNotNull(actualTrainingMap);
     }
 
     @Test
     public void testGetTrainingTypeMap() {
         // Act
-        Map<Integer, TrainingType> trainingTypeMap = mapStorage.getTrainingTypeMap();
+        Map<Integer, TrainingType> actualTrainingTypeMap = systemUnderTest.getTrainingTypeMap();
 
         // Assert
-        assertNotNull(trainingTypeMap);
+        assertNotNull(actualTrainingTypeMap);
     }
 
     @Test
     public void testGetUserMap() {
         // Act
-        Map<Integer, User> userMap = mapStorage.getUserMap();
+        Map<Integer, User> actualUserMap = systemUnderTest.getUserMap();
 
         // Assert
-        assertNotNull(userMap);
+        assertNotNull(actualUserMap);
     }
 
     @Test
     public void testNextAvailableUserId() {
         // Act
-        int nextUserId = mapStorage.nextAvailableUserId();
+        int nextUserId = systemUnderTest.nextAvailableUserId();
 
         // Assert
         // Verify that the returned ID is as expected and incremented
         assertEquals(1, nextUserId);
-        int nextUserId2 = mapStorage.nextAvailableUserId();
+        int nextUserId2 = systemUnderTest.nextAvailableUserId();
         assertEquals(2, nextUserId2);
     }
 
     @Test
     public void testNextAvailableTrainingId() {
         // Act
-        int nextTrainingId = mapStorage.nextAvailableTrainingId();
+        int nextTrainingId = systemUnderTest.nextAvailableTrainingId();
 
         // Assert
         // Verify that the returned ID is as expected and incremented
         assertEquals(1, nextTrainingId);
-        int nextTrainingId2 = mapStorage.nextAvailableTrainingId();
+        int nextTrainingId2 = systemUnderTest.nextAvailableTrainingId();
         assertEquals(2, nextTrainingId2);
     }
 
     @Test
     public void testNextAvailableTrainerId() {
         // Act
-        int nextTrainerId = mapStorage.nextAvailableTrainerId();
+        int nextTrainerId = systemUnderTest.nextAvailableTrainerId();
 
         // Assert
         // Verify that the returned ID is as expected and incremented
         assertEquals(1, nextTrainerId);
-        int nextTrainerId2 = mapStorage.nextAvailableTrainerId();
+        int nextTrainerId2 = systemUnderTest.nextAvailableTrainerId();
         assertEquals(2, nextTrainerId2);
     }
 
     @Test
     public void testNextAvailableTraineeId() {
         // Act
-        int nextTraineeId = mapStorage.nextAvailableTraineeId();
+        int nextTraineeId = systemUnderTest.nextAvailableTraineeId();
 
         // Assert
         // Verify that the returned ID is as expected and incremented
         assertEquals(1, nextTraineeId);
-        int nextTraineeId2 = mapStorage.nextAvailableTraineeId();
+        int nextTraineeId2 = systemUnderTest.nextAvailableTraineeId();
         assertEquals(2, nextTraineeId2);
     }
 
     @Test
     public void testNextAvailableTrainingTypeId() {
         // Act
-        int nextTrainingTypeId = mapStorage.nextAvailableTrainingTypeId();
+        int nextTrainingTypeId = systemUnderTest.nextAvailableTrainingTypeId();
 
         // Assert
         // Verify that the returned ID is as expected and incremented
         assertEquals(1, nextTrainingTypeId);
-        int nextTrainingTypeId2 = mapStorage.nextAvailableTrainingTypeId();
+        int nextTrainingTypeId2 = systemUnderTest.nextAvailableTrainingTypeId();
         assertEquals(2, nextTrainingTypeId2);
     }
 }

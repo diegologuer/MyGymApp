@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class TraineeServiceImplTest {
 
-    private TraineeServiceImpl traineeService;
+    private TraineeServiceImpl systemUnderTest;
 
     @Mock
     private TraineeDAOImpl traineeDAO;
@@ -31,12 +31,13 @@ public class TraineeServiceImplTest {
         traineeDAO = mock(TraineeDAOImpl.class);
         credentialsService = mock(CredentialsService.class);
         userDAO = mock(UserDAOImpl.class);
-        traineeService = new TraineeServiceImpl(traineeDAO, credentialsService, userDAO);
+        systemUnderTest = new TraineeServiceImpl(traineeDAO, credentialsService, userDAO);
     }
 
     @Test
     public void givenValidNameAndLastName_whenCreateTrainee_thenTraineeIsCreated() {
         // Arrange
+        int expectedTraineeId = 1;
         String name = "John";
         String lastName = "Doe";
         Date dateOfBirth = new Date();
@@ -49,27 +50,27 @@ public class TraineeServiceImplTest {
         when(userDAO.save(any(User.class))).thenReturn(1);
 
         // Act
-        int traineeId = traineeService.createTrainee(name, lastName, dateOfBirth, address);
+        int actualTraineeId = systemUnderTest.createTrainee(name, lastName, dateOfBirth, address);
 
         // Assert
-        assertEquals(1, traineeId);
+        assertEquals(expectedTraineeId, actualTraineeId);
     }
 
     @Test
     public void givenTraineeIdAndDetails_whenUpdateTrainee_thenTraineeIsUpdated() {
         // Arrange
         int traineeId = 1;
-        Date dateOfBirth = new Date();
-        String address = "456 Elm St";
+        Date expectedDateOfBirth = new Date();
+        String expectedAddress = "456 Elm St";
         Trainee trainee = new Trainee(traineeId, new Date(), "123 Main St", 1);
         when(traineeDAO.getById(traineeId)).thenReturn(trainee);
 
         // Act
-        Trainee updatedTrainee = traineeService.updateTrainee(traineeId, dateOfBirth, address);
+        Trainee actualTrainee = systemUnderTest.updateTrainee(traineeId, expectedDateOfBirth, expectedAddress);
 
         // Assert
-        assertEquals(dateOfBirth, updatedTrainee.getDateOfBirth());
-        assertEquals(address, updatedTrainee.getAddress());
+        assertEquals(expectedDateOfBirth, actualTrainee.getDateOfBirth());
+        assertEquals(expectedAddress, actualTrainee.getAddress());
     }
 
     @Test
@@ -77,29 +78,29 @@ public class TraineeServiceImplTest {
         // Arrange
         int traineeId = 1;
         int userId = 123;
-        Trainee trainee = new Trainee(1, new Date(), "Address", 123);
-        Mockito.when(traineeDAO.getById(traineeId)).thenReturn(trainee);
+        Trainee expectedTrainee = new Trainee(1, new Date(), "Address", 123);
+        Mockito.when(traineeDAO.getById(traineeId)).thenReturn(expectedTrainee);
 
         // Act
-        Trainee deletedTrainee = traineeService.deleteTrainee(traineeId);
+        Trainee actualTrainee = systemUnderTest.deleteTrainee(traineeId);
 
         // Assert
         Mockito.verify(userDAO).removeById(userId);
         Mockito.verify(traineeDAO).removeById(traineeId);
-        assertEquals(trainee, deletedTrainee);
+        assertEquals(expectedTrainee, actualTrainee);
     }
 
     @Test
     public void givenTraineeId_whenGetTraineeById_thenTraineeIsRetrieved() {
         // Arrange
-        int traineeId = 1;
-        Trainee trainee = new Trainee(traineeId, new Date(), "123 Main St", 1);
-        when(traineeDAO.getById(traineeId)).thenReturn(trainee);
+        int expectedTraineeId = 1;
+        Trainee trainee = new Trainee(expectedTraineeId, new Date(), "123 Main St", 1);
+        when(traineeDAO.getById(expectedTraineeId)).thenReturn(trainee);
 
         // Act
-        Trainee retrievedTrainee = traineeService.getTraineeById(traineeId);
+        Trainee actualTrainee = systemUnderTest.getTraineeById(expectedTraineeId);
 
         // Assert
-        assertEquals(traineeId, retrievedTrainee.getId());
+        assertEquals(expectedTraineeId, actualTrainee.getId());
     }
 }

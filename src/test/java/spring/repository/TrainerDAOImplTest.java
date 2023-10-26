@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+@SuppressWarnings("rawtypes")
 public class TrainerDAOImplTest {
     private Storage storage;
     private TrainerDAO trainerDAO;
@@ -44,6 +45,7 @@ public class TrainerDAOImplTest {
     public void givenTrainerMapWithTrainer_whenGetTrainerById_thenShouldReturnTrainer() {
         // Arrange
         Trainer trainer = new Trainer(1, 4, 2);
+        //noinspection rawtypes
         when(storage.getTrainerMap()).thenReturn(Mockito.<Map>mock(Map.class));
         when(storage.getTrainerMap().get(1)).thenReturn(trainer);
 

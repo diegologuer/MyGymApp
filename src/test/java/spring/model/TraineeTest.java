@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TraineeTest {
-    private Trainee trainee;
+    private Trainee systemUnderTest;
 
     public TraineeTest() {
     }
@@ -24,30 +24,36 @@ public class TraineeTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date DOB = sdf.parse("1990-05-20");
         // Create an instance of Trainee
-        trainee = new Trainee(1, DOB, "123 Gym St", 101);
+        systemUnderTest = new Trainee(1, DOB, "123 Gym St", 101);
     }
 
     @Test
     public void givenTraineeWithId_whenGetId_thenShouldReturnId() {
         // Act and Assert
-        assertEquals(1, trainee.getId());
+        int expected = 1;
+        int actual = systemUnderTest.getId();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void givenNewId_whenSetId_thenShouldUpdateId() {
         // Act
-        trainee.setId(2);
+        int newId = 2;
+        systemUnderTest.setId(newId);
 
         // Assert
-        assertEquals(2, trainee.getId());
+        int expected = 2;
+        int actual = systemUnderTest.getId();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void givenTraineeWithDateOfBirth_whenGetDateOfBirth_thenShouldReturnDateOfBirth() throws ParseException {
         // Act and Assert
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date newDateOfBirth = sdf.parse("1990-05-20");
-        assertEquals(newDateOfBirth, trainee.getDateOfBirth());
+        Date expected = sdf.parse("1990-05-20");
+        Date actual = systemUnderTest.getDateOfBirth();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -55,49 +61,59 @@ public class TraineeTest {
         // Act
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newDateOfBirth = sdf.parse("1990-05-21");
-        trainee.setDateOfBirth(newDateOfBirth);
+        systemUnderTest.setDateOfBirth(newDateOfBirth);
 
         // Assert
-        assertEquals(newDateOfBirth, trainee.getDateOfBirth());
+        Date actual = systemUnderTest.getDateOfBirth();
+        assertEquals(newDateOfBirth, actual);
     }
 
     @Test
     public void givenTraineeWithAddress_whenGetAddress_thenShouldReturnAddress() {
         // Act and Assert
-        assertEquals("123 Gym St", trainee.getAddress());
+        String expected = "123 Gym St";
+        String actual = systemUnderTest.getAddress();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void givenNewAddress_whenSetAddress_thenShouldUpdateAddress() {
         // Act
-        trainee.setAddress("456 Fitness Ave");
+        String newAddress = "456 Fitness Ave";
+        systemUnderTest.setAddress(newAddress);
 
         // Assert
-        assertEquals("456 Fitness Ave", trainee.getAddress());
+        String actual = systemUnderTest.getAddress();
+        assertEquals(newAddress, actual);
     }
 
     @Test
     public void givenTraineeWithUserId_whenGetUserId_thenShouldReturnUserId() {
         // Act and Assert
-        assertEquals(101, trainee.getUserId());
+        int expected = 101;
+        int actual = systemUnderTest.getUserId();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void givenNewUserId_whenSetUserId_thenShouldUpdateUserId() {
         // Act
-        trainee.setUserId(102);
+        int newUserId = 102;
+        systemUnderTest.setUserId(newUserId);
 
         // Assert
-        assertEquals(102, trainee.getUserId());
+        int actual = systemUnderTest.getUserId();
+        assertEquals(newUserId, actual);
     }
 
     @Test
     public void givenTrainee_whenToString_thenShouldReturnStringRepresentation() {
         // Act
-        String expectedString = "Trainee{id=1, dateOfBirth=" + trainee.getDateOfBirth() + ", address='123 Gym St', userId=101}";
+        String expected = "Trainee{id=1, dateOfBirth=" + systemUnderTest.getDateOfBirth() + ", address='123 Gym St', userId=101}";
+        String actual = systemUnderTest.toString();
 
         // Assert
-        assertEquals(expectedString, trainee.toString());
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -108,5 +124,6 @@ public class TraineeTest {
         // Assert
         assertNotNull(defaultTrainee);
     }
+
 
 }

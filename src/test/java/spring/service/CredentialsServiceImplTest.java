@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class CredentialsServiceImplTest {
 
-    private CredentialsServiceImpl credentialsService;
+    private CredentialsServiceImpl systemUnderTest;
 
     @Mock
     private UserDAO userDAO;
@@ -19,7 +19,7 @@ public class CredentialsServiceImplTest {
     @Before
     public void setUp() {
         userDAO = mock(UserDAO.class);
-        credentialsService = new CredentialsServiceImpl(userDAO);
+        systemUnderTest = new CredentialsServiceImpl(userDAO);
     }
 
     @Test
@@ -30,10 +30,10 @@ public class CredentialsServiceImplTest {
         when(userDAO.usernameExists(anyString())).thenReturn(false);
 
         // Act
-        String username = credentialsService.generateUsername(name, lastName);
+        String actualUsername = systemUnderTest.generateUsername(name, lastName);
 
         // Assert
-        assertEquals("John.Doe", username);
+        assertEquals("John.Doe", actualUsername);
     }
 
     @Test
@@ -41,23 +41,25 @@ public class CredentialsServiceImplTest {
         // Arrange
         String name = "John";
         String lastName = "Doe";
+        String expectedUsername = "John.Doe";
         when(userDAO.usernameExists(anyString())).thenReturn(true, false);
 
         // Act
-        String username = credentialsService.generateUsername(name, lastName);
+        String actualUsername = systemUnderTest.generateUsername(name, lastName);
 
         // Assert
-        assertNotEquals("John.Doe", username);
+        assertNotEquals(expectedUsername, actualUsername);
     }
 
     @Test
     public void givenGeneratePassword_whenGeneratePassword_thenPasswordIsTenCharactersLong() {
         // Act
-        String password = credentialsService.generatePassword();
+        int expectedPasswordLength = 10;
+        String actualPassword = systemUnderTest.generatePassword();
 
         // Assert
-        assertNotNull(password);
-        assertEquals(10, password.length());
+        assertNotNull(actualPassword);
+        assertEquals(expectedPasswordLength, actualPassword.length());
     }
 }
 

@@ -17,26 +17,28 @@ import java.util.NoSuchElementException;
 public class TraineeDAOImplTest {
 
     private Storage storage;
-    private TraineeDAO traineeDAO;
+    private TraineeDAO systemUnderTest;
+
 
     @Before
     public void setUp() {
         //Arrange
         storage = mock(Storage.class);
-        traineeDAO = new TraineeDAOImpl(storage);
+        systemUnderTest = new TraineeDAOImpl(storage);
     }
 
     @Test
     public void givenTrainee_whenSave_thenShouldReturnSavedTraineeId() {
         // Arrange
+        int expectedId = 8;
         Trainee trainee = new Trainee(8, new Date(), "Address", 6);
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
 
         // Act
-        int saveTraineeId = traineeDAO.save(trainee);
+        int actualId = systemUnderTest.save(trainee);
 
         // Assert
-        assertEquals(8, saveTraineeId);
+        assertEquals(expectedId, actualId);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -45,22 +47,22 @@ public class TraineeDAOImplTest {
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
 
         // Act and Assert
-        traineeDAO.getById(1);
+        systemUnderTest.getById(1);
     }
 
     @Test
     public void givenTrainee_whenRemoveById_thenShouldReturnRemovedTrainee() {
         // Arrange
-        Trainee trainee = new Trainee(4, new Date(), "Address", 6);
-        int traineeId = trainee.getId();
+        Trainee expectedTrainee = new Trainee(4, new Date(), "Address", 6);
+        int traineeId = expectedTrainee.getId();
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
-        traineeDAO.save(trainee);
+        systemUnderTest.save(expectedTrainee);
 
         // Act
-        Trainee removedTrainee = traineeDAO.removeById(traineeId);
+        Trainee actualTrainee = systemUnderTest.removeById(traineeId);
 
         // Assert
-        assertEquals(trainee, removedTrainee);
+        assertEquals(expectedTrainee, actualTrainee);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -69,7 +71,7 @@ public class TraineeDAOImplTest {
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
 
         // Act and Assert
-        traineeDAO.removeById(1);
+        systemUnderTest.removeById(1);
     }
 
     @Test
@@ -78,7 +80,7 @@ public class TraineeDAOImplTest {
         when(storage.nextAvailableTraineeId()).thenReturn(1);
 
         // Act
-        int result = traineeDAO.nextAvailableId();
+        int result = systemUnderTest.nextAvailableId();
 
         // Assert
         assertEquals(1, result);

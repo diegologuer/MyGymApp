@@ -8,52 +8,61 @@ import org.junit.Test;
 import org.spring.model.TrainingType;
 
 public class TrainingTypeTest {
-    private TrainingType trainingType;
+    private TrainingType systemUnderTest;
 
     @Before
     public void setUp() {
         // Arrange
         // Create an instance of TrainingType to use in the tests
-        trainingType = new TrainingType(1, "Cardio Workout");
+        systemUnderTest = new TrainingType(1, "Cardio Workout");
     }
 
     @Test
     public void givenTrainingTypeWithId_whenGetId_thenShouldReturnId() {
         // Act and Assert
-        assertEquals(1, trainingType.getId());
+        int expectedId = 1;
+        int actualId = systemUnderTest.getId();
+        assertEquals(expectedId, actualId);
     }
 
     @Test
     public void givenNewId_whenSetId_thenShouldUpdateId() {
         // Act
-        trainingType.setId(2);
+        int newId = 2;
+        systemUnderTest.setId(newId);
 
         // Assert
-        assertEquals(2, trainingType.getId());
+        int actualId = systemUnderTest.getId();
+        assertEquals(newId, actualId);
     }
 
     @Test
     public void givenTrainingTypeWithTrainingTypeName_whenGetTrainingTypeName_thenShouldReturnTrainingTypeName() {
         // Act and Assert
-        assertEquals("Cardio Workout", trainingType.getTrainingTypeName());
+        String expectedTrainingTypeName = "Cardio Workout";
+        String actualTrainingTypeName = systemUnderTest.getTrainingTypeName();
+        assertEquals(expectedTrainingTypeName, actualTrainingTypeName);
     }
 
     @Test
     public void givenNewTrainingTypeName_whenSetTrainingTypeName_thenShouldUpdateTrainingTypeName() {
         // Act
-        trainingType.setTrainingTypeName("Strength Training");
+        String newTrainingTypeName = "Strength Training";
+        systemUnderTest.setTrainingTypeName(newTrainingTypeName);
 
         // Assert
-        assertEquals("Strength Training", trainingType.getTrainingTypeName());
+        String actualTrainingTypeName = systemUnderTest.getTrainingTypeName();
+        assertEquals(newTrainingTypeName, actualTrainingTypeName);
     }
 
     @Test
     public void givenTrainingType_whenToString_thenShouldReturnStringRepresentation() {
         // Act
-        String expectedString = "TrainingType{id=1, trainingTypeName='Cardio Workout'}";
+        String expectedTrainingType = "TrainingType{id=1, trainingTypeName='Cardio Workout'}";
+        String actualTrainingType = systemUnderTest.toString();
 
         // Assert
-        assertEquals(expectedString, trainingType.toString());
+        assertEquals(expectedTrainingType, actualTrainingType);
     }
 
     @Test

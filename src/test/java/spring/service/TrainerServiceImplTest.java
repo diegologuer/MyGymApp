@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class TrainerServiceImplTest {
 
-    private TrainerServiceImpl trainerService;
+    private TrainerServiceImpl systemUnderTest;
 
     @Mock
     private TrainerDAOImpl trainerDAO;
@@ -35,7 +35,7 @@ public class TrainerServiceImplTest {
         credentialsService = mock(CredentialsService.class);
         userDAO = mock(UserDAOImpl.class);
         trainingTypeDAO = mock(TrainingTypeDAO.class);
-        trainerService = new TrainerServiceImpl(trainerDAO, credentialsService, userDAO, trainingTypeDAO);
+        systemUnderTest = new TrainerServiceImpl(trainerDAO, credentialsService, userDAO, trainingTypeDAO);
     }
 
     @Test
@@ -43,50 +43,50 @@ public class TrainerServiceImplTest {
         // Arrange
         String name = "John";
         String lastName = "Doe";
-        int specialization = 1;
+        int expectedTrainerId = 1;
         when(credentialsService.generateUsername(name, lastName)).thenReturn("John.Doe");
         when(credentialsService.generatePassword()).thenReturn("randomPassword");
-        when(trainingTypeDAO.getById(specialization)).thenReturn(new TrainingType(specialization, "Specialization"));
+        when(trainingTypeDAO.getById(expectedTrainerId)).thenReturn(new TrainingType(expectedTrainerId, "Specialization"));
         when(trainerDAO.nextAvailableId()).thenReturn(1);
         when(userDAO.nextAvailableId()).thenReturn(1);
         when(trainerDAO.save(any(Trainer.class))).thenReturn(1);
         when(userDAO.save(any(User.class))).thenReturn(1);
 
         // Act
-        int trainerId = trainerService.createTrainer(name, lastName, specialization);
+        int actualTrainerId = systemUnderTest.createTrainer(name, lastName, expectedTrainerId);
 
         // Assert
-        assertEquals(1, trainerId);
+        assertEquals(expectedTrainerId, actualTrainerId);
     }
 
     @Test
     public void givenTrainerIdAndSpecialization_whenUpdateTrainer_thenTrainerIsUpdated() {
         // Arrange
         int trainerId = 1;
-        int specialization = 2;
-        when(trainingTypeDAO.getById(specialization)).thenReturn(new TrainingType(specialization, "New Specialization"));
+        int expectedTrainerTypeId = 2;
+        when(trainingTypeDAO.getById(expectedTrainerTypeId)).thenReturn(new TrainingType(expectedTrainerTypeId, "New Specialization"));
         Trainer trainer = new Trainer(trainerId, 1, 1);
         when(trainerDAO.getById(trainerId)).thenReturn(trainer);
 
         // Act
-        Trainer updatedTrainer = trainerService.updateTrainer(trainerId, specialization);
+        Trainer actualTrainer = systemUnderTest.updateTrainer(trainerId, expectedTrainerTypeId);
 
         // Assert
-        assertEquals(specialization, updatedTrainer.getSpecialization());
+        assertEquals(expectedTrainerTypeId, actualTrainer.getSpecialization());
     }
 
     @Test
     public void givenTrainerId_whenGetTrainerById_thenTrainerIsRetrieved() {
         // Arrange
-        int trainerId = 1;
-        Trainer trainer = new Trainer(trainerId, 1, 1);
-        when(trainerDAO.getById(trainerId)).thenReturn(trainer);
+        int expectedTrainerId = 1;
+        Trainer trainer = new Trainer(expectedTrainerId, 1, 1);
+        when(trainerDAO.getById(expectedTrainerId)).thenReturn(trainer);
 
         // Act
-        Trainer retrievedTrainer = trainerService.getTrainerById(trainerId);
+        Trainer actualTrainer = systemUnderTest.getTrainerById(expectedTrainerId);
 
         // Assert
-        assertEquals(trainerId, retrievedTrainer.getId());
+        assertEquals(expectedTrainerId, actualTrainer.getId());
     }
 }
 

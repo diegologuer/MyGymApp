@@ -8,75 +8,88 @@ import org.junit.Test;
 import org.spring.model.Trainer;
 
 public class TrainerTest {
-    private Trainer trainer;
+    private Trainer systemUnderTest;
 
     @Before
     public void setUp() {
-        //Arrange
+        // Arrange
         // Create an instance of Trainer to use in the tests
-        trainer = new Trainer(1, 101, 2);
+        systemUnderTest = new Trainer(1, 101, 2);
     }
 
     @Test
-    public void givenTrainerWithId_whenGetID_thenShouldReturnId() {
-        //Act and assert
-        assertEquals(1, trainer.getId());
+    public void givenTrainerWithId_whenGetId_thenShouldReturnId() {
+        // Act and Assert
+        int expectedId = 1;
+        int actualId = systemUnderTest.getId();
+        assertEquals(expectedId, actualId);
     }
 
     @Test
-    public void givenNewId_whenSetID_thenShouldUpdateId() {
-        //Act
-        trainer.setID(2);
+    public void givenNewId_whenSetId_thenShouldUpdateId() {
+        // Act
+        int newId = 2;
+        systemUnderTest.setID(newId);
 
-        //Assert
-        assertEquals(2, trainer.getId());
+        // Assert
+        int actualId = systemUnderTest.getId();
+        assertEquals(newId, actualId);
     }
 
     @Test
     public void givenTrainerWithUserId_whenGetUserId_thenShouldReturnUserId() {
-        //Act and assert
-        assertEquals(101, trainer.getUserId());
+        // Act and Assert
+        int expectedUserId = 101;
+        int actualUserId = systemUnderTest.getUserId();
+        assertEquals(expectedUserId, actualUserId);
     }
 
     @Test
     public void givenNewUserId_whenSetUserId_thenShouldUpdateUserId() {
-        //Act
-        trainer.setUserId(102);
+        // Act
+        int newUserId = 102;
+        systemUnderTest.setUserId(newUserId);
 
-        //Assert
-        assertEquals(102, trainer.getUserId());
+        // Assert
+        int actualUserId = systemUnderTest.getUserId();
+        assertEquals(newUserId, actualUserId);
     }
 
     @Test
     public void givenTrainerWithSpecialization_whenGetSpecialization_thenShouldReturnSpecialization() {
-        //Act and assert
-        assertEquals(2, trainer.getSpecialization());
+        // Act and Assert
+        int expectedSpecialization = 2;
+        int actualSpecialization = systemUnderTest.getSpecialization();
+        assertEquals(expectedSpecialization, actualSpecialization);
     }
 
     @Test
     public void givenNewSpecialization_whenSetSpecialization_thenShouldUpdateSpecialization() {
-        //Act
-        trainer.setSpecialization(3);
+        // Act
+        int newSpecialization = 3;
+        systemUnderTest.setSpecialization(newSpecialization);
 
-        //Assert
-        assertEquals(3, trainer.getSpecialization());
+        // Assert
+        int actualSpecialization = systemUnderTest.getSpecialization();
+        assertEquals(newSpecialization, actualSpecialization);
     }
 
     @Test
     public void givenTrainer_whenToString_thenShouldReturnStringRepresentation() {
-        //Act
+        // Act
         String expectedString = "Trainer{id=1, userId=101, specialization='2'}";
+        String actualTrainer = systemUnderTest.toString();
 
-        //Assert
-        assertEquals(expectedString, trainer.toString());
+        // Assert
+        assertEquals(expectedString, actualTrainer);
     }
 
     @Test
     public void testDefaultConstructor_shouldCreateTrainerObject() {
-        //Act
+        // Act
         Trainer defaultTrainer = new Trainer();
 
-        //Assert
+        // Assert
         assertNotNull(defaultTrainer);
     }
 }

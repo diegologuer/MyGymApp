@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class TrainingServiceImplTest {
 
-    private TrainingServiceImpl trainingService;
+    private TrainingServiceImpl systemUnderTest;
 
     @Mock
     private TrainingTypeDAO trainingTypeDAO;
@@ -36,7 +36,7 @@ public class TrainingServiceImplTest {
         trainingDAO = mock(TrainingDAO.class);
         traineeDAO = mock(TraineeDAO.class);
         trainerDAO = mock(TrainerDAO.class);
-        trainingService = new TrainingServiceImpl(trainingTypeDAO, trainingDAO, traineeDAO, trainerDAO);
+        systemUnderTest = new TrainingServiceImpl(trainingTypeDAO, trainingDAO, traineeDAO, trainerDAO);
     }
 
     @Test
@@ -44,21 +44,21 @@ public class TrainingServiceImplTest {
         // Arrange
         String trainingName = "Java Programming";
         Date trainingDate = new Date(System.currentTimeMillis() + 3600000); // Set the date 1 hour in the future
-        int traineeId = 1;
+        int expectedTraineeId = 1;
         int trainingTypeId = 2;
         int trainingDuration = 60;
         int trainerId = 3;
         when(trainingTypeDAO.getById(trainingTypeId)).thenReturn(new TrainingType(trainingTypeId, "Programming"));
-        when(traineeDAO.getById(traineeId)).thenReturn(new Trainee(traineeId, new Date(), "Address", 1));
+        when(traineeDAO.getById(expectedTraineeId)).thenReturn(new Trainee(expectedTraineeId, new Date(), "Address", 1));
         when(trainerDAO.getById(trainerId)).thenReturn(new Trainer(trainerId, 1, 2));
         when(trainingDAO.nextAvailableId()).thenReturn(1);
         when(trainingDAO.save(any(Training.class))).thenReturn(1);
 
         // Act
-        int trainingId = trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
+        int actualTrainingId = systemUnderTest.createTraining(trainingName, trainingDate, expectedTraineeId, trainingTypeId, trainingDuration, trainerId);
 
         // Assert
-        assertEquals(1, trainingId);
+        assertEquals(expectedTraineeId, actualTrainingId);
     }
 
     @Test
@@ -76,21 +76,21 @@ public class TrainingServiceImplTest {
         when(trainerDAO.getById(trainerId)).thenReturn(new Trainer(trainerId, 1, 2));
 
         // Act and Assert
-        assertThrows(IllegalArgumentException.class, () -> trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId));
+        assertThrows(IllegalArgumentException.class, () -> systemUnderTest.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId));
     }
 
     @Test
     public void givenTrainingId_whenGetTrainingById_thenTrainingIsRetrieved() {
         // Arrange
-        int trainingId = 1;
-        Training training = new Training(trainingId, "Java Programming", new Date(), 1, 2, 60, 3);
-        when(trainingDAO.getById(trainingId)).thenReturn(training);
+        int expectedTrainingId = 1;
+        Training training = new Training(expectedTrainingId, "Java Programming", new Date(), 1, 2, 60, 3);
+        when(trainingDAO.getById(expectedTrainingId)).thenReturn(training);
 
         // Act
-        Training retrievedTraining = trainingService.getTrainingById(trainingId);
+        Training actualTraining = systemUnderTest.getTrainingById(expectedTrainingId);
 
         // Assert
-        assertEquals(trainingId, retrievedTraining.getId());
+        assertEquals(expectedTrainingId, actualTraining.getId());
     }
 
 }

@@ -7,112 +7,138 @@ import org.spring.model.User;
 import static org.junit.Assert.*;
 
 public class UserTest {
-    private User user;
+
+    private User systemUnderTest;
 
     @Before
     public void setUp() {
         // Arrange
         // Create an instance of User to use in the tests
-        user = new User(1, "John", "Doe", "John.Doe", "aB3#dFg$12", true);
+        systemUnderTest = new User(1, "John", "Doe", "John.Doe", "aB3#dFg$12", true);
     }
 
     @Test
     public void givenUserWithId_whenGetId_thenShouldReturnId() {
         // Act and Assert
-        assertEquals(1, user.getId());
+        int expectedId = 1;
+        int actualId = systemUnderTest.getId();
+        assertEquals(expectedId, actualId);
     }
 
     @Test
     public void givenNewId_whenSetId_thenShouldUpdateId() {
         // Act
-        user.setId(2);
+        int newId = 2;
+        systemUnderTest.setId(newId);
 
         // Assert
-        assertEquals(2, user.getId());
+        int actualId = systemUnderTest.getId();
+        assertEquals(newId, actualId);
     }
 
     @Test
     public void givenUserWithFirstName_whenGetFirstName_thenShouldReturnFirstName() {
         // Act and Assert
-        assertEquals("John", user.getFirstName());
+        String expectedFirstName = "John";
+        String actualFirstName = systemUnderTest.getFirstName();
+        assertEquals(expectedFirstName, actualFirstName);
     }
 
     @Test
     public void givenNewFirstName_whenSetFirstName_thenShouldUpdateFirstName() {
         // Act
-        user.setFirstName("Alice");
+        String newFirstName = "Alice";
+        systemUnderTest.setFirstName(newFirstName);
 
         // Assert
-        assertEquals("Alice", user.getFirstName());
+        String actualFirstName = systemUnderTest.getFirstName();
+        assertEquals(newFirstName, actualFirstName);
     }
 
     @Test
     public void givenUserWithLastName_whenGetLastName_thenShouldReturnLastName() {
         // Act and Assert
-        assertEquals("Doe", user.getLastName());
+        String expectedLastName = "Doe";
+        String actualLastName = systemUnderTest.getLastName();
+        assertEquals(expectedLastName, actualLastName);
     }
 
     @Test
     public void givenNewLastName_whenSetLastName_thenShouldUpdateLastName() {
         // Act
-        user.setLastName("Smith");
+        String newLastName = "Smith";
+        systemUnderTest.setLastName(newLastName);
 
         // Assert
-        assertEquals("Smith", user.getLastName());
+        String actualLastName = systemUnderTest.getLastName();
+        assertEquals(newLastName, actualLastName);
     }
 
     @Test
     public void givenUserWithUsername_whenGetUsername_thenShouldReturnUsername() {
         // Act and Assert
-        assertEquals("John.Doe", user.getUsername());
+        String expectedUsername = "John.Doe";
+        String actualUsername = systemUnderTest.getUsername();
+        assertEquals(expectedUsername, actualUsername);
     }
 
     @Test
     public void givenNewUsername_whenSetUsername_thenShouldUpdateUsername() {
         // Act
-        user.setUsername("Alice.Smith");
+        String newUsername = "Alice.Smith";
+        systemUnderTest.setUsername(newUsername);
 
         // Assert
-        assertEquals("Alice.Smith", user.getUsername());
+        String actualUsername = systemUnderTest.getUsername();
+        assertEquals(newUsername, actualUsername);
     }
 
     @Test
     public void givenUserWithPassword_whenGetPassword_thenShouldReturnPassword() {
         // Act and Assert
-        assertEquals("aB3#dFg$12", user.getPassword());
+        String expectedPassword = "aB3#dFg$12";
+        String actualPassword = systemUnderTest.getPassword();
+        assertEquals(expectedPassword, actualPassword);
     }
 
     @Test
     public void givenNewPassword_whenSetPassword_thenShouldUpdatePassword() {
         // Act
-        user.setPassword("xY7@kLp$34");
+        String newPassword = "xY7@kLp$34";
+        systemUnderTest.setPassword(newPassword);
 
         // Assert
-        assertEquals("xY7@kLp$34", user.getPassword());
+        String actualPassword = systemUnderTest.getPassword();
+        assertEquals(newPassword, actualPassword);
     }
 
     @Test
     public void givenUserWithIsActive_whenGetIsActive_thenShouldReturnIsActive() {
         // Act and Assert
-        assertTrue(user.getIsActive());
+        boolean expectedIsActive = true;
+        boolean actualIsActive = systemUnderTest.getIsActive();
+        assertEquals(expectedIsActive, actualIsActive);
     }
 
     @Test
     public void givenNewIsActive_whenSetIsActive_thenShouldUpdateIsActive() {
         // Act
-        user.setIsActive(false);
+        boolean newIsActive = false;
+        systemUnderTest.setIsActive(newIsActive);
 
         // Assert
-        assertFalse(user.getIsActive());
+        boolean actualIsActive = systemUnderTest.getIsActive();
+        assertEquals(newIsActive, actualIsActive);
     }
 
     @Test
     public void givenUser_whenToString_thenShouldReturnStringRepresentation() {
         // Act
-        String expectedString = "User{id=1, firstName='John', lastName='Doe', username='John.Doe', password='aB3#dFg$12', isActive=true";
+        String expectedString = "User{id=1, firstName='John', lastName='Doe', username='John.Doe', password='aB3#dFg$12', isActive=true}";
+        String actualString = systemUnderTest.toString();
 
         // Assert
-        assertEquals(expectedString, user.toString());
+        assertEquals(expectedString, actualString);
     }
 
     @Test
@@ -123,5 +149,4 @@ public class UserTest {
         // Assert
         assertNotNull(defaultUser);
     }
-
 }

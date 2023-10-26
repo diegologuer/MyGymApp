@@ -2,7 +2,6 @@ package org.spring.service.trainer;
 
 
 import org.spring.model.Trainer;
-import org.spring.model.User;
 import org.spring.repository.trainer.TrainerDAOImpl;
 import org.spring.repository.trainingType.TrainingTypeDAO;
 import org.spring.repository.user.UserDAOImpl;
@@ -18,7 +17,6 @@ public class TrainerServiceImpl implements TrainerService {
 
     private final TrainerDAOImpl trainerDAOImpl;
     private final CredentialsService credentialsService;
-    private final UserDAOImpl userDAOImpl;
     private final TrainingTypeDAO trainingTypeDAO;
     private static final Logger logger = Logger.getLogger(TrainerServiceImpl.class.getName());
 
@@ -27,7 +25,6 @@ public class TrainerServiceImpl implements TrainerService {
                               UserDAOImpl userDAOImpl, TrainingTypeDAO trainingTypeDAO) {
         this.trainerDAOImpl = trainerDAOImpl;
         this.credentialsService = credentialsService;
-        this.userDAOImpl = userDAOImpl;
         this.trainingTypeDAO = trainingTypeDAO;
     }
 

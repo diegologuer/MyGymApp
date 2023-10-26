@@ -11,43 +11,51 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TrainingTest {
-    private Training training;
+    private Training systemUnderTest;
 
     @Before
     public void setUp() {
         // Arrange
         // Create an instance of Training to use in the tests
-        training = new Training(1, "Cardio Kickboxing Class", new Date(), 101, 2, 60, 201);
+        systemUnderTest = new Training(1, "Cardio Kickboxing Class", new Date(), 101, 2, 60, 201);
     }
 
     @Test
     public void givenTrainingWithId_whenGetId_thenShouldReturnId() {
         // Act and Assert
-        assertEquals(1, training.getId());
+        int expectedId = 1;
+        int actualId = systemUnderTest.getId();
+        assertEquals(expectedId, actualId);
     }
 
     @Test
     public void givenNewId_whenSetId_thenShouldUpdateId() {
         // Act
-        training.setid(2);
+        int newId = 2;
+        systemUnderTest.setid(newId);
 
         // Assert
-        assertEquals(2, training.getId());
+        int actualId = systemUnderTest.getId();
+        assertEquals(newId, actualId);
     }
 
     @Test
     public void givenTrainingWithTrainingName_whenGetTrainingName_thenShouldReturnTrainingName() {
         // Act and Assert
-        assertEquals("Cardio Kickboxing Class", training.getTrainingName());
+        String expectedTrainingName = "Cardio Kickboxing Class";
+        String actualTrainingName = systemUnderTest.getTrainingName();
+        assertEquals(expectedTrainingName, actualTrainingName);
     }
 
     @Test
     public void givenNewTrainingName_whenSetTrainingName_thenShouldUpdateTrainingName() {
         // Act
-        training.setTrainingName("Strength and Conditioning Workshop");
+        String newTrainingName = "Strength and Conditioning Workshop";
+        systemUnderTest.setTrainingName(newTrainingName);
 
         // Assert
-        assertEquals("Strength and Conditioning Workshop", training.getTrainingName());
+        String actualTrainingName = systemUnderTest.getTrainingName();
+        assertEquals(newTrainingName, actualTrainingName);
     }
 
     @Test
@@ -55,79 +63,97 @@ public class TrainingTest {
         // Act
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newTrainingDate = sdf.parse("2023-11-15");
-        training.setTrainingDate(newTrainingDate);
+        systemUnderTest.setTrainingDate(newTrainingDate);
 
         // Assert
-        assertEquals(newTrainingDate, training.getTrainingDate());
+        Date actualTrainingDate = systemUnderTest.getTrainingDate();
+        assertEquals(newTrainingDate, actualTrainingDate);
     }
 
     @Test
     public void givenTrainingWithTraineeId_whenGetTraineeId_thenShouldReturnTraineeId() {
         // Act and Assert
-        assertEquals(101, training.getTraineeId());
+        int expectedTraineeId = 101;
+        int actualTraineeId = systemUnderTest.getTraineeId();
+        assertEquals(expectedTraineeId, actualTraineeId);
     }
 
     @Test
     public void givenNewTraineeId_whenSetTraineeId_thenShouldUpdateTraineeId() {
         // Act
-        training.setTraineeId(102);
+        int newTraineeId = 102;
+        systemUnderTest.setTraineeId(newTraineeId);
 
         // Assert
-        assertEquals(102, training.getTraineeId());
+        int actualTraineeId = systemUnderTest.getTraineeId();
+        assertEquals(newTraineeId, actualTraineeId);
     }
 
     @Test
     public void givenTrainingWithTrainingTypeId_whenGetTrainingTypeId_thenShouldReturnTrainingTypeId() {
         // Act and Assert
-        assertEquals(2, training.getTrainingTypeId());
+        int expectedTrainingTypeId = 2;
+        int actualTrainingTypeId = systemUnderTest.getTrainingTypeId();
+        assertEquals(expectedTrainingTypeId, actualTrainingTypeId);
     }
 
     @Test
     public void givenNewTrainingTypeId_whenSetTrainingTypeId_thenShouldUpdateTrainingTypeId() {
         // Act
-        training.setTrainingTypeId(3);
+        int newTrainingTypeId = 3;
+        systemUnderTest.setTrainingTypeId(newTrainingTypeId);
 
         // Assert
-        assertEquals(3, training.getTrainingTypeId());
+        int actualTrainingTypeId = systemUnderTest.getTrainingTypeId();
+        assertEquals(newTrainingTypeId, actualTrainingTypeId);
     }
 
     @Test
     public void givenTrainingWithTrainingDuration_whenGetTrainingDuration_thenShouldReturnTrainingDuration() {
         // Act and Assert
-        assertEquals(60, training.getTrainingDuration());
+        int expectedTrainingDuration = 60;
+        int actualTrainingDuration = systemUnderTest.getTrainingDuration();
+        assertEquals(expectedTrainingDuration, actualTrainingDuration);
     }
 
     @Test
     public void givenNewTrainingDuration_whenSetTrainingDuration_thenShouldUpdateTrainingDuration() {
         // Act
-        training.setTrainingDuration(90);
+        int newTrainingDuration = 90;
+        systemUnderTest.setTrainingDuration(newTrainingDuration);
 
         // Assert
-        assertEquals(90, training.getTrainingDuration());
+        int actualTrainingDuration = systemUnderTest.getTrainingDuration();
+        assertEquals(newTrainingDuration, actualTrainingDuration);
     }
 
     @Test
     public void givenTrainingWithTrainerId_whenGetTrainerId_thenShouldReturnTrainerId() {
         // Act and Assert
-        assertEquals(201, training.getTrainerId());
+        int expectedTrainerId = 201;
+        int actualTrainerId = systemUnderTest.getTrainerId();
+        assertEquals(expectedTrainerId, actualTrainerId);
     }
 
     @Test
     public void givenNewTrainerId_whenSetTrainerId_thenShouldUpdateTrainerId() {
         // Act
-        training.setTrainerId(202);
+        int newTrainerId = 202;
+        systemUnderTest.setTrainerId(newTrainerId);
 
         // Assert
-        assertEquals(202, training.getTrainerId());
+        int actualTrainerId = systemUnderTest.getTrainerId();
+        assertEquals(newTrainerId, actualTrainerId);
     }
 
     @Test
     public void givenTraining_whenToString_thenShouldReturnStringRepresentation() {
         // Act
-        String expectedString = "Training{id=1, trainingName='Cardio Kickboxing Class', trainingDate=" + training.getTrainingDate() + ", traineeId=101, trainingTypeId=2, trainingDuration=60, trainerId=201}";
+        String expectedString = "Training{id=1, trainingName='Cardio Kickboxing Class', trainingDate=" + systemUnderTest.getTrainingDate() + ", traineeId=101, trainingTypeId=2, trainingDuration=60, trainerId=201}";
+        String actualString = systemUnderTest.toString();
 
         // Assert
-        assertEquals(expectedString, training.toString());
+        assertEquals(expectedString, actualString);
     }
 
     @Test
