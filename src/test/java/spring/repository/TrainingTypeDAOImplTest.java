@@ -16,28 +16,28 @@ import java.util.NoSuchElementException;
 
 public class TrainingTypeDAOImplTest {
     private Storage storage;
-    private TrainingTypeDAO trainingTypeDAO;
+    private TrainingTypeDAO systemUnderTest;
 
     @Before
     public void setUp() {
         // Arrange
         storage = mock(Storage.class);
-        trainingTypeDAO = new TrainingTypeDAOImpl(storage);
+        systemUnderTest = new TrainingTypeDAOImpl(storage);
     }
 
     @Test
     public void givenTrainingTypeMapWithTrainingType_whenGetTrainingTypeById_thenShouldReturnTrainingType() {
         // Arrange
-        TrainingType trainingType = new TrainingType(1, "Cardio Workout");
+        TrainingType expectedtrainingType = new TrainingType(1, "Cardio Workout");
         when(storage.getTrainingTypeMap()).thenReturn(mock(Map.class));
-        when(storage.getTrainingTypeMap().get(1)).thenReturn(trainingType);
+        when(storage.getTrainingTypeMap().get(1)).thenReturn(expectedtrainingType);
 
         // Act
-        TrainingType result = trainingTypeDAO.getById(1);
+        TrainingType actualTrainingType = systemUnderTest.getById(1);
 
         // Assert
-        assertNotNull(result);
-        assertEquals(trainingType, result);
+        assertNotNull(actualTrainingType);
+        assertEquals(expectedtrainingType, actualTrainingType);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -46,19 +46,20 @@ public class TrainingTypeDAOImplTest {
         when(storage.getTrainingTypeMap()).thenReturn(mock(Map.class));
 
         // Act and Assert
-        trainingTypeDAO.getById(1);
+        systemUnderTest.getById(1);
     }
 
     @Test
     public void givenNextAvailableTrainingTypeId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         // Arrange
+        int expectedAvailableId = 1;
         when(storage.nextAvailableTrainingTypeId()).thenReturn(1);
 
         // Act
-        int result = trainingTypeDAO.nextAvailableId();
+        int result = systemUnderTest.nextAvailableId();
 
         // Assert
-        assertEquals(1, result);
+        assertEquals(expectedAvailableId, result);
         verify(storage).nextAvailableTrainingTypeId();
     }
 }

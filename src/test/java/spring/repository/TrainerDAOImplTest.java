@@ -19,42 +19,43 @@ import java.util.NoSuchElementException;
 @SuppressWarnings("rawtypes")
 public class TrainerDAOImplTest {
     private Storage storage;
-    private TrainerDAO trainerDAO;
+    private TrainerDAO systemUnderTest;
 
     @Before
     public void setUp() {
         // Arrange
         storage = mock(Storage.class);
-        trainerDAO = new TrainerDAOImpl(storage);
+        systemUnderTest = new TrainerDAOImpl(storage);
     }
 
     @Test
     public void givenTrainer_whenSave_thenShouldReturnSavedTrainerId() {
         // Arrange
+        int expectedTrainerId = 1;
         Trainer trainer = new Trainer(1, 3, 2);
         when(storage.getTrainerMap()).thenReturn(new HashMap<>());
 
         // Act
-        int saveTrainerId = trainerDAO.save(trainer);
+        int actualTrainerId = systemUnderTest.save(trainer);
 
         // Assert
-        assertEquals(1, saveTrainerId);
+        assertEquals(expectedTrainerId, actualTrainerId);
     }
 
     @Test
     public void givenTrainerMapWithTrainer_whenGetTrainerById_thenShouldReturnTrainer() {
         // Arrange
-        Trainer trainer = new Trainer(1, 4, 2);
+        Trainer expectedTrainer = new Trainer(1, 4, 2);
         //noinspection rawtypes
         when(storage.getTrainerMap()).thenReturn(Mockito.<Map>mock(Map.class));
-        when(storage.getTrainerMap().get(1)).thenReturn(trainer);
+        when(storage.getTrainerMap().get(1)).thenReturn(expectedTrainer);
 
         // Act
-        Trainer result = trainerDAO.getById(1);
+        Trainer actualTrainer = systemUnderTest.getById(1);
 
         // Assert
-        assertNotNull(result);
-        assertEquals(trainer, result);
+        assertNotNull(actualTrainer);
+        assertEquals(expectedTrainer, actualTrainer);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -63,19 +64,20 @@ public class TrainerDAOImplTest {
         when(storage.getTrainerMap()).thenReturn(mock(Map.class));
 
         // Act and Assert
-        trainerDAO.getById(1);
+        systemUnderTest.getById(1);
     }
 
     @Test
     public void givenNextAvailableTrainerId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         // Arrange
+        int expectedAvailableId = 1;
         when(storage.nextAvailableTrainerId()).thenReturn(1);
 
         // Act
-        int result = trainerDAO.nextAvailableId();
+        int actualAvailableId = systemUnderTest.nextAvailableId();
 
         // Assert
-        assertEquals(1, result);
+        assertEquals(expectedAvailableId, actualAvailableId);
         verify(storage).nextAvailableTrainerId();
     }
 }

@@ -14,42 +14,43 @@ import java.util.NoSuchElementException;
 
 public class UserDAOImplTest {
     private Storage storage;
-    private UserDAO userDAO;
+    private UserDAO systemUnderTest;
 
 
     @Before
     public void setUp() {
         // Arrange
         storage = mock(Storage.class);
-        userDAO = new UserDAOImpl(storage);
+        systemUnderTest = new UserDAOImpl(storage);
     }
 
     @Test
     public void givenUser_whenSave_thenShouldReturnSavedUserId() {
         // Arrange
+        int expectedUserId = 1;
         User user = new User(1, "John", "Doe", "John.Doe", "1234567890", true);
         when(storage.getUserMap()).thenReturn(new HashMap<>());
 
         // Act
-        int saveUserId = userDAO.save(user);
+        int actualUserId = systemUnderTest.save(user);
 
         // Assert
-        assertEquals(1, saveUserId);
+        assertEquals(expectedUserId, actualUserId);
     }
 
     @Test
     public void givenUserMapWithUser_whenGetUserById_thenShouldReturnUser() {
         // Arrange
-        User user = new User(1, "John", "Doe", "John.Doe", "password", true);
+        User expectedUser = new User(1, "John", "Doe", "John.Doe", "password", true);
         when(storage.getUserMap()).thenReturn(mock(Map.class));
-        when(storage.getUserMap().get(1)).thenReturn(user);
+        when(storage.getUserMap().get(1)).thenReturn(expectedUser);
 
         // Act
-        User result = userDAO.getById(1);
+        User actualUser = systemUnderTest.getById(1);
 
         // Assert
-        assertNotNull(result);
-        assertEquals(user, result);
+        assertNotNull(actualUser);
+        assertEquals(expectedUser, actualUser);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -58,22 +59,22 @@ public class UserDAOImplTest {
         when(storage.getUserMap()).thenReturn(mock(Map.class));
 
         // Act and Assert
-        userDAO.getById(1);
+        systemUnderTest.getById(1);
     }
 
     @Test
     public void givenUser_whenRemoveById_thenShouldReturnRemovedUser() {
         // Arrange
-        User user = new User(1, "John", "Doe", "John.Doe", "password", true);
-        int userId = user.getId();
+        User expectedUser = new User(1, "John", "Doe", "John.Doe", "password", true);
+        int userId = expectedUser.getId();
         when(storage.getUserMap()).thenReturn(new HashMap<>());
-        userDAO.save(user);
+        systemUnderTest.save(expectedUser);
 
         // Act
-        User removedUser = userDAO.removeById(userId);
+        User actualUser = systemUnderTest.removeById(userId);
 
         // Assert
-        assertEquals(user, removedUser);
+        assertEquals(expectedUser, actualUser);
     }
 
     @Test
@@ -86,8 +87,8 @@ public class UserDAOImplTest {
         storage.getUserMap().put(2, user2);
 
         // Act
-        boolean exists = userDAO.usernameExists("John.Doe");
-        boolean doesNotExist = userDAO.usernameExists("NonExistingUsername");
+        boolean exists = systemUnderTest.usernameExists("John.Doe");
+        boolean doesNotExist = systemUnderTest.usernameExists("NonExistingUsername");
 
         // Assert
         assertTrue(exists);
@@ -97,13 +98,14 @@ public class UserDAOImplTest {
     @Test
     public void givenNextAvailableUserId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         // Arrange
+        int expectedAvailableId = 1;
         when(storage.nextAvailableUserId()).thenReturn(1);
 
         // Act
-        int result = userDAO.nextAvailableId();
+        int actualAvailableId = systemUnderTest.nextAvailableId();
 
         // Assert
-        assertEquals(1, result);
+        assertEquals(expectedAvailableId, actualAvailableId);
         verify(storage).nextAvailableUserId();
     }
 }

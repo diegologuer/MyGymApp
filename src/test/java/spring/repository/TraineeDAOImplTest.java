@@ -77,13 +77,14 @@ public class TraineeDAOImplTest {
     @Test
     public void givenNextAvailableTraineeId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         // Arrange
+        int expectedAvailableId = 1;
         when(storage.nextAvailableTraineeId()).thenReturn(1);
 
         // Act
-        int result = systemUnderTest.nextAvailableId();
+        int actualAvailableId = systemUnderTest.nextAvailableId();
 
         // Assert
-        assertEquals(1, result);
+        assertEquals(expectedAvailableId, actualAvailableId);
         verify(storage).nextAvailableTraineeId();
     }
 }
