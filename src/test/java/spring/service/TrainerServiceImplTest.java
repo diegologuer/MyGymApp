@@ -30,6 +30,7 @@ public class TrainerServiceImplTest {
 
     @Before
     public void setUp() {
+        // Arrange
         trainerDAO = mock(TrainerDAOImpl.class);
         credentialsService = mock(CredentialsService.class);
         userDAO = mock(UserDAOImpl.class);
@@ -39,6 +40,7 @@ public class TrainerServiceImplTest {
 
     @Test
     public void givenValidNameAndLastName_whenCreateTrainer_thenTrainerIsCreated() {
+        // Arrange
         String name = "John";
         String lastName = "Doe";
         int specialization = 1;
@@ -49,27 +51,41 @@ public class TrainerServiceImplTest {
         when(userDAO.nextAvailableId()).thenReturn(1);
         when(trainerDAO.save(any(Trainer.class))).thenReturn(1);
         when(userDAO.save(any(User.class))).thenReturn(1);
+
+        // Act
         int trainerId = trainerService.createTrainer(name, lastName, specialization);
+
+        // Assert
         assertEquals(1, trainerId);
     }
 
     @Test
     public void givenTrainerIdAndSpecialization_whenUpdateTrainer_thenTrainerIsUpdated() {
+        // Arrange
         int trainerId = 1;
         int specialization = 2;
         when(trainingTypeDAO.getById(specialization)).thenReturn(new TrainingType(specialization, "New Specialization"));
         Trainer trainer = new Trainer(trainerId, 1, 1);
         when(trainerDAO.getById(trainerId)).thenReturn(trainer);
+
+        // Act
         Trainer updatedTrainer = trainerService.updateTrainer(trainerId, specialization);
+
+        // Assert
         assertEquals(specialization, updatedTrainer.getSpecialization());
     }
 
     @Test
     public void givenTrainerId_whenGetTrainerById_thenTrainerIsRetrieved() {
+        // Arrange
         int trainerId = 1;
         Trainer trainer = new Trainer(trainerId, 1, 1);
         when(trainerDAO.getById(trainerId)).thenReturn(trainer);
+
+        // Act
         Trainer retrievedTrainer = trainerService.getTrainerById(trainerId);
+
+        // Assert
         assertEquals(trainerId, retrievedTrainer.getId());
     }
 }

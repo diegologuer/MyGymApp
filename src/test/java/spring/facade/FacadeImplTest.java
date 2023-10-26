@@ -98,8 +98,10 @@ public class FacadeImplTest {
         //Arrange
         Mockito.when(trainerService.createTrainer("John", "Doe", 2)).thenReturn(1);
 
-
+        //Act
         int result = facade.createTrainer("John", "Doe", 2);
+
+        //Assert
         assertEquals(1, result);
     }
 

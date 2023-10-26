@@ -22,38 +22,57 @@ public class TrainerDAOImplTest {
 
     @Before
     public void setUp() {
+        // Arrange
         storage = mock(Storage.class);
         trainerDAO = new TrainerDAOImpl(storage);
     }
 
     @Test
     public void givenTrainer_whenSave_thenShouldReturnSavedTrainerId() {
+        // Arrange
         Trainer trainer = new Trainer(1, 3, 2);
         when(storage.getTrainerMap()).thenReturn(new HashMap<>());
+
+        // Act
         int saveTrainerId = trainerDAO.save(trainer);
+
+        // Assert
         assertEquals(1, saveTrainerId);
     }
 
     @Test
     public void givenTrainerMapWithTrainer_whenGetTrainerById_thenShouldReturnTrainer() {
+        // Arrange
         Trainer trainer = new Trainer(1, 4, 2);
         when(storage.getTrainerMap()).thenReturn(Mockito.<Map>mock(Map.class));
         when(storage.getTrainerMap().get(1)).thenReturn(trainer);
+
+        // Act
         Trainer result = trainerDAO.getById(1);
+
+        // Assert
         assertNotNull(result);
         assertEquals(trainer, result);
     }
 
     @Test(expected = NoSuchElementException.class)
     public void givenEmptyTrainerMap_whenGetTrainerById_thenShouldThrowNoSuchElementException() {
+        // Arrange
         when(storage.getTrainerMap()).thenReturn(mock(Map.class));
+
+        // Act and Assert
         trainerDAO.getById(1);
     }
 
     @Test
     public void givenNextAvailableTrainerId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
+        // Arrange
         when(storage.nextAvailableTrainerId()).thenReturn(1);
+
+        // Act
         int result = trainerDAO.nextAvailableId();
+
+        // Assert
         assertEquals(1, result);
         verify(storage).nextAvailableTrainerId();
     }

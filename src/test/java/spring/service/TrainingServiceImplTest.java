@@ -31,6 +31,7 @@ public class TrainingServiceImplTest {
 
     @Before
     public void setUp() {
+        // Arrange
         trainingTypeDAO = mock(TrainingTypeDAO.class);
         trainingDAO = mock(TrainingDAO.class);
         traineeDAO = mock(TraineeDAO.class);
@@ -40,6 +41,7 @@ public class TrainingServiceImplTest {
 
     @Test
     public void givenValidTrainingData_whenCreateTraining_thenTrainingIsCreated() {
+        // Arrange
         String trainingName = "Java Programming";
         Date trainingDate = new Date(System.currentTimeMillis() + 3600000); // Set the date 1 hour in the future
         int traineeId = 1;
@@ -51,12 +53,17 @@ public class TrainingServiceImplTest {
         when(trainerDAO.getById(trainerId)).thenReturn(new Trainer(trainerId, 1, 2));
         when(trainingDAO.nextAvailableId()).thenReturn(1);
         when(trainingDAO.save(any(Training.class))).thenReturn(1);
+
+        // Act
         int trainingId = trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
+
+        // Assert
         assertEquals(1, trainingId);
     }
 
     @Test
     public void givenInvalidTrainingData_whenCreateTraining_thenShouldThrow() {
+        // Arrange
         String trainingName = "X";
         Date trainingDate = new Date(System.currentTimeMillis() - 3600000); // Set the date 1 hour in the past
         int traineeId = 1;
@@ -67,15 +74,23 @@ public class TrainingServiceImplTest {
         when(trainingTypeDAO.getById(trainingTypeId)).thenReturn(new TrainingType(trainingTypeId, "Programming"));
         when(traineeDAO.getById(traineeId)).thenReturn(new Trainee(traineeId, new Date(), "Address", 1));
         when(trainerDAO.getById(trainerId)).thenReturn(new Trainer(trainerId, 1, 2));
+
+        // Act and Assert
         assertThrows(IllegalArgumentException.class, () -> trainingService.createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId));
     }
 
     @Test
     public void givenTrainingId_whenGetTrainingById_thenTrainingIsRetrieved() {
+        // Arrange
         int trainingId = 1;
         Training training = new Training(trainingId, "Java Programming", new Date(), 1, 2, 60, 3);
         when(trainingDAO.getById(trainingId)).thenReturn(training);
+
+        // Act
         Training retrievedTraining = trainingService.getTrainingById(trainingId);
+
+        // Assert
         assertEquals(trainingId, retrievedTraining.getId());
     }
+
 }
