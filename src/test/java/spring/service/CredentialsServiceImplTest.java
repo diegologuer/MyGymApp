@@ -23,7 +23,7 @@ public class CredentialsServiceImplTest {
     }
 
     @Test
-    public void testGenerateUsername() {
+    public void givenValidNameAndLastName_whenGenerateUsername_thenUsernameIsGenerated() {
         String name = "John";
         String lastName = "Doe";
         when(userDAO.usernameExists(anyString())).thenReturn(false);
@@ -32,7 +32,7 @@ public class CredentialsServiceImplTest {
     }
 
     @Test
-    public void testGenerateUsernameWithExistingUsername() {
+    public void givenExistingUsername_whenGenerateUsername_thenGeneratedUsernameIsDifferent() {
         String name = "John";
         String lastName = "Doe";
         when(userDAO.usernameExists(anyString())).thenReturn(true, false);
@@ -41,7 +41,7 @@ public class CredentialsServiceImplTest {
     }
 
     @Test
-    public void testGeneratePassword() {
+    public void givenGeneratePassword_whenGeneratePassword_thenPasswordIsTenCharactersLong() {
         String password = credentialsService.generatePassword();
         assertNotNull(password);
         assertEquals(10, password.length());

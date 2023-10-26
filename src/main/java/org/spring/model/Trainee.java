@@ -20,7 +20,7 @@ public class Trainee {
         this.userId = userId;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 

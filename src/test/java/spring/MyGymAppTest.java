@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MyGymAppTest {
 
     @Test
-    public void testApplicationContextInitialization() {
+    public void givenApplicationContextInitialized_whenApplicationStarts_thenContextIsReady() {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
     }

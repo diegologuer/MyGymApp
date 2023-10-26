@@ -17,35 +17,35 @@ public class TrainingTypeTest {
     }
 
     @Test
-    public void testGetId() {
+    public void givenTrainingTypeWithId_whenGetId_thenShouldReturnId() {
         assertEquals(1, trainingType.getId());
     }
 
     @Test
-    public void testSetId() {
+    public void givenNewId_whenSetId_thenShouldUpdateId() {
         trainingType.setId(2);
         assertEquals(2, trainingType.getId());
     }
 
     @Test
-    public void testGetTrainingTypeName() {
+    public void givenTrainingTypeWithTrainingTypeName_whenGetTrainingTypeName_thenShouldReturnTrainingTypeName() {
         assertEquals("Cardio Workout", trainingType.getTrainingTypeName());
     }
 
     @Test
-    public void testSetTrainingTypeName() {
+    public void givenNewTrainingTypeName_whenSetTrainingTypeName_thenShouldUpdateTrainingTypeName() {
         trainingType.setTrainingTypeName("Strength Training");
         assertEquals("Strength Training", trainingType.getTrainingTypeName());
     }
 
     @Test
-    public void testToString() {
+    public void givenTrainingType_whenToString_thenShouldReturnStringRepresentation() {
         String expectedString = "TrainingType{id=1, trainingTypeName='Cardio Workout'}";
         assertEquals(expectedString, trainingType.toString());
     }
 
     @Test
-    public void testDefaultConstructor() {
+    public void testDefaultConstructor_shouldCreateTrainingTypeObject() {
         TrainingType defaultTrainingType = new TrainingType();
         assertNotNull(defaultTrainingType);
     }

@@ -1,5 +1,6 @@
 package org.spring.service.profile;
 
+import org.spring.model.User;
 import org.spring.repository.user.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,5 +42,31 @@ public class CredentialsServiceImpl implements CredentialsService {
         }
         logger.info("Created Password");
         return randomString.toString();
+    }
+
+    public int createPersonProfile(String name, String lastname){
+
+        logger.info("Validating name and lastname...");
+        //Validate name and lastname
+        if (name == null || name.length() < 3) {
+            throw new IllegalArgumentException("Please enter a valid name");
+        }
+        if (lastname == null || lastname.length() < 3) {
+            throw new IllegalArgumentException("Please enter a valid username");
+        }
+
+        logger.info("Assigning credentials...");
+        //Assigning username and password
+        String username = generateUsername(name, lastname);
+        String password = generatePassword();
+
+        //Assigning available IDs
+        int userId = userDAO.nextAvailableId();
+
+        logger.info("new user saved");
+        //Saving user
+        userDAO.save(new User(userId, name, lastname, username, password, true));
+
+        return userId;
     }
 }

@@ -20,29 +20,29 @@ public class TrainingTest {
     }
 
     @Test
-    public void testGetId() {
-        assertEquals(1, training.getid());
+    public void givenTrainingWithId_whenGetId_thenShouldReturnId() {
+        assertEquals(1, training.getId());
     }
 
     @Test
-    public void testSetId() {
+    public void givenNewId_whenSetId_thenShouldUpdateId() {
         training.setid(2);
-        assertEquals(2, training.getid());
+        assertEquals(2, training.getId());
     }
 
     @Test
-    public void testGetTrainingName() {
+    public void givenTrainingWithTrainingName_whenGetTrainingName_thenShouldReturnTrainingName() {
         assertEquals("Cardio Kickboxing Class", training.getTrainingName());
     }
 
     @Test
-    public void testSetTrainingName() {
+    public void givenNewTrainingName_whenSetTrainingName_thenShouldUpdateTrainingName() {
         training.setTrainingName("Strength and Conditioning Workshop");
         assertEquals("Strength and Conditioning Workshop", training.getTrainingName());
     }
 
     @Test
-    public void testSetTrainingDate() throws ParseException {
+    public void givenNewTrainingDate_whenSetTrainingDate_thenShouldUpdateTrainingDate() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newTrainingDate = sdf.parse("2023-11-15");
         training.setTrainingDate(newTrainingDate);
@@ -50,57 +50,57 @@ public class TrainingTest {
     }
 
     @Test
-    public void testGetTraineeId() {
+    public void givenTrainingWithTraineeId_whenGetTraineeId_thenShouldReturnTraineeId() {
         assertEquals(101, training.getTraineeId());
     }
 
     @Test
-    public void testSetTraineeId() {
+    public void givenNewTraineeId_whenSetTraineeId_thenShouldUpdateTraineeId() {
         training.setTraineeId(102);
         assertEquals(102, training.getTraineeId());
     }
 
     @Test
-    public void testGetTrainingTypeId() {
+    public void givenTrainingWithTrainingTypeId_whenGetTrainingTypeId_thenShouldReturnTrainingTypeId() {
         assertEquals(2, training.getTrainingTypeId());
     }
 
     @Test
-    public void testSetTrainingTypeId() {
+    public void givenNewTrainingTypeId_whenSetTrainingTypeId_thenShouldUpdateTrainingTypeId() {
         training.setTrainingTypeId(3);
         assertEquals(3, training.getTrainingTypeId());
     }
 
     @Test
-    public void testGetTrainingDuration() {
+    public void givenTrainingWithTrainingDuration_whenGetTrainingDuration_thenShouldReturnTrainingDuration() {
         assertEquals(60, training.getTrainingDuration());
     }
 
     @Test
-    public void testSetTrainingDuration() {
+    public void givenNewTrainingDuration_whenSetTrainingDuration_thenShouldUpdateTrainingDuration() {
         training.setTrainingDuration(90);
         assertEquals(90, training.getTrainingDuration());
     }
 
     @Test
-    public void testGetTrainerId() {
+    public void givenTrainingWithTrainerId_whenGetTrainerId_thenShouldReturnTrainerId() {
         assertEquals(201, training.getTrainerId());
     }
 
     @Test
-    public void testSetTrainerId() {
+    public void givenNewTrainerId_whenSetTrainerId_thenShouldUpdateTrainerId() {
         training.setTrainerId(202);
         assertEquals(202, training.getTrainerId());
     }
 
     @Test
-    public void testToString() {
+    public void givenTraining_whenToString_thenShouldReturnStringRepresentation() {
         String expectedString = "Training{id=1, trainingName='Cardio Kickboxing Class', trainingDate=" + training.getTrainingDate() + ", traineeId=101, trainingTypeId=2, trainingDuration=60, trainerId=201}";
         assertEquals(expectedString, training.toString());
     }
 
     @Test
-    public void testDefaultConstructor() {
+    public void testDefaultConstructor_shouldCreateTrainingObject() {
         Training defaultTraining = new Training();
         assertNotNull(defaultTraining);
     }

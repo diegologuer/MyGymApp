@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 public class TraineeDAOImplTest {
+
     private Storage storage;
     private TraineeDAO traineeDAO;
 
@@ -25,7 +26,7 @@ public class TraineeDAOImplTest {
     }
 
     @Test
-    public void saveTest() {
+    public void givenTrainee_whenSave_thenShouldReturnSavedTraineeId() {
         Trainee trainee = new Trainee(8, new Date(), "Address", 6);
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
         int saveTraineeId = traineeDAO.save(trainee);
@@ -33,16 +34,16 @@ public class TraineeDAOImplTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testGetTraineeByIdNotFound() {
+    public void givenEmptyTraineeMap_whenGetTraineeById_thenShouldThrowNoSuchElementException() {
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
         traineeDAO.getById(1);
     }
 
     @Test
-    public void testRemoveByIdTraineeFound() {
+    public void givenTrainee_whenRemoveById_thenShouldReturnRemovedTrainee() {
 
         Trainee trainee = new Trainee(4, new Date(), "Address", 6);
-        int traineeId = trainee.getID();
+        int traineeId = trainee.getId();
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
         traineeDAO.save(trainee);
         Trainee removedTrainee = traineeDAO.removeById(traineeId);
@@ -51,13 +52,13 @@ public class TraineeDAOImplTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testRemoveTraineeByIdNotFound() {
+    public void givenEmptyTraineeMap_whenRemoveTraineeById_thenShouldThrowNoSuchElementException() {
         when(storage.getTraineeMap()).thenReturn(new HashMap<>());
         traineeDAO.removeById(1);
     }
 
     @Test
-    public void testNextAvailableId() {
+    public void givenNextAvailableTraineeId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         when(storage.nextAvailableTraineeId()).thenReturn(1);
         int result = traineeDAO.nextAvailableId();
         assertEquals(1, result);

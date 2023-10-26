@@ -38,7 +38,7 @@ public class TrainerServiceImplTest {
     }
 
     @Test
-    public void testCreateTrainer() {
+    public void givenValidNameAndLastName_whenCreateTrainer_thenTrainerIsCreated() {
         String name = "John";
         String lastName = "Doe";
         int specialization = 1;
@@ -54,7 +54,7 @@ public class TrainerServiceImplTest {
     }
 
     @Test
-    public void testUpdateTrainer() {
+    public void givenTrainerIdAndSpecialization_whenUpdateTrainer_thenTrainerIsUpdated() {
         int trainerId = 1;
         int specialization = 2;
         when(trainingTypeDAO.getById(specialization)).thenReturn(new TrainingType(specialization, "New Specialization"));
@@ -65,12 +65,12 @@ public class TrainerServiceImplTest {
     }
 
     @Test
-    public void testGetTrainerById() {
+    public void givenTrainerId_whenGetTrainerById_thenTrainerIsRetrieved() {
         int trainerId = 1;
         Trainer trainer = new Trainer(trainerId, 1, 1);
         when(trainerDAO.getById(trainerId)).thenReturn(trainer);
         Trainer retrievedTrainer = trainerService.getTrainerById(trainerId);
-        assertEquals(trainerId, retrievedTrainer.getID());
+        assertEquals(trainerId, retrievedTrainer.getId());
     }
 }
 

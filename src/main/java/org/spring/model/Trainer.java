@@ -16,7 +16,7 @@ public class Trainer {
     }
 
     // Getters and setters
-    public int getID() {
+    public int getId() {
         return id;
     }
 

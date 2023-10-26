@@ -27,25 +27,25 @@ public class TraineeTest {
     }
 
     @Test
-    public void testGetId() {
-        assertEquals(1, trainee.getID());
+    public void givenTraineeWithId_whenGetId_thenShouldReturnId() {
+        assertEquals(1, trainee.getId());
     }
 
     @Test
-    public void testSetId() {
+    public void givenNewId_whenSetId_thenShouldUpdateId() {
         trainee.setId(2);
-        assertEquals(2, trainee.getID());
+        assertEquals(2, trainee.getId());
     }
 
     @Test
-    public void testGetDateOfBirth() throws ParseException {
+    public void givenTraineeWithDateOfBirth_whenGetDateOfBirth_thenShouldReturnDateOfBirth() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newDateOfBirth = sdf.parse("1990-05-20");
         assertEquals(newDateOfBirth, trainee.getDateOfBirth());
     }
 
     @Test
-    public void testSetDateOfBirth() throws ParseException {
+    public void givenNewDateOfBirth_whenSetDateOfBirth_thenShouldUpdateDateOfBirth() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newDateOfBirth = sdf.parse("1990-05-21");
         trainee.setDateOfBirth(newDateOfBirth);
@@ -53,35 +53,35 @@ public class TraineeTest {
     }
 
     @Test
-    public void testGetAddress() {
+    public void givenTraineeWithAddress_whenGetAddress_thenShouldReturnAddress() {
         assertEquals("123 Gym St", trainee.getAddress());
     }
 
     @Test
-    public void testSetAddress() {
+    public void givenNewAddress_whenSetAddress_thenShouldUpdateAddress() {
         trainee.setAddress("456 Fitness Ave");
         assertEquals("456 Fitness Ave", trainee.getAddress());
     }
 
     @Test
-    public void testGetUserId() {
+    public void givenTraineeWithUserId_whenGetUserId_thenShouldReturnUserId() {
         assertEquals(101, trainee.getUserId());
     }
 
     @Test
-    public void testSetUserId() {
+    public void givenNewUserId_whenSetUserId_thenShouldUpdateUserId() {
         trainee.setUserId(102);
         assertEquals(102, trainee.getUserId());
     }
 
     @Test
-    public void testToString() {
+    public void givenTrainee_whenToString_thenShouldReturnStringRepresentation() {
         String expectedString = "Trainee{id=1, dateOfBirth=" + trainee.getDateOfBirth() + ", address='123 Gym St', userId=101}";
         assertEquals(expectedString, trainee.toString());
     }
 
     @Test
-    public void testDefaultConstructor() {
+    public void testDefaultConstructor_shouldCreateTraineeObject() {
         Trainee defaultTrainee = new Trainee();
         assertNotNull(defaultTrainee);
     }

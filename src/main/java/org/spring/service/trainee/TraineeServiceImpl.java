@@ -28,26 +28,11 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public int createTrainee(String name, String lastname, Date dateOfBirth, String address) {
 
-        logger.info("Validating arguments...");
-        //Validate name and lastname
-        if (name == null || name.length() < 3) {
-            throw new IllegalArgumentException("Please enter a valid name");
-        }
-        if (lastname == null || lastname.length() < 3) {
-            throw new IllegalArgumentException("Please enter a valid username");
-        }
-
-        logger.info("Assigning credentials...");
-        //Assigning username and password
-        String username = credentialsService.generateUsername(name, lastname);
-        String password = credentialsService.generatePassword();
+        //Generating user
+        int userId = credentialsService.createPersonProfile(name, lastname);
 
         //Assigning available IDs
         int traineeId = traineeDAOImpl.nextAvailableId();
-        int userId = userDAOImpl.nextAvailableId();
-
-        //Saving trainee
-        userDAOImpl.save(new User(userId, name, lastname, username, password, true));
 
         //Return the ID number of the created Trainee
         return traineeDAOImpl.save(new Trainee(traineeId, dateOfBirth, address, userId));

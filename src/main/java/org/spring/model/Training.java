@@ -25,7 +25,7 @@ public class Training {
         this.trainerId = trainerId;
     }
 
-    public int getid() {
+    public int getId() {
         return id;
     }
 

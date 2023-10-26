@@ -34,32 +34,14 @@ public class TrainerServiceImpl implements TrainerService {
     @Override
     public int createTrainer(String name, String lastname, int specialization) {
 
-        logger.info("Validating arguments...");
-        //Validate name and lastname
-        if (name == null || name.length() < 3) {
-            throw new IllegalArgumentException("Please enter a valid name");
-        }
-        if (lastname == null || lastname.length() < 3) {
-            throw new IllegalArgumentException("Please enter a valid username");
-        }
-        //Check specialization id existence
-        trainingTypeDAO.getById(specialization);
-
-        logger.info("Assigning credentials...");
-        //Assigning username and password
-        String username = credentialsService.generateUsername(name, lastname);
-        String password = credentialsService.generatePassword();
+        //Generating user
+        int userId = credentialsService.createPersonProfile(name, lastname);
 
         //Assigning available IDs
         int trainerId = trainerDAOImpl.nextAvailableId();
-        int userId = userDAOImpl.nextAvailableId();
-
-        //Saving trainee
-        userDAOImpl.save(new User(userId, name, lastname, username, password, true));
 
         //Return the ID number of the created Trainee
         return trainerDAOImpl.save(new Trainer(trainerId, userId, specialization));
-
     }
 
     @Override

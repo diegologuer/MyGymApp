@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,55 +55,34 @@ public class MapStorage implements Storage {
     @PostConstruct
     public void initializeStorageFromJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
         logger.info("Initializing Storage...");
-        // Load and map Trainee objects from the JSON file
-        List<Trainee> trainees = loadJsonList(traineesFilePath, objectMapper, Trainee.class);
-        for (Trainee trainee : trainees) {
-            traineeMap.put(trainee.getID(), trainee);
-            if (trainee.getID() >= nextTraineeId) {
-                nextTraineeId = trainee.getID() + 1;
-            }
-        }
 
-        // Load and map Trainer objects from the JSON file
-        List<Trainer> trainers = loadJsonList(trainersFilePath, objectMapper, Trainer.class);
-        for (Trainer trainer : trainers) {
-            trainerMap.put(trainer.getID(), trainer);
-            if (trainer.getID() >= nextTrainerId) {
-                nextTrainerId = trainer.getID() + 1;
-            }
-        }
+        initializeJsonData(traineesFilePath, objectMapper, Trainee.class, traineeMap, nextTraineeId);
+        initializeJsonData(trainersFilePath, objectMapper, Trainer.class, trainerMap, nextTrainerId);
+        initializeJsonData(trainingsFilePath, objectMapper, Training.class, trainingMap, nextTrainingId);
+        initializeJsonData(trainingTypesFilePath, objectMapper, TrainingType.class, trainingTypeMap, nextTrainingTypeId);
+        initializeJsonData(usersFilePath, objectMapper, User.class, userMap, nextUserId);
 
-        // Load and map Training objects from the JSON file
-        List<Training> trainings = loadJsonList(trainingsFilePath, objectMapper, Training.class);
-        for (Training training : trainings) {
-            trainingMap.put(training.getid(), training);
-            if (training.getid() >= nextTrainingId) {
-                nextTrainingId = training.getid() + 1;
-            }
-        }
-
-        // Load and map TrainingType objects from the JSON file
-        List<TrainingType> trainingTypes = loadJsonList(trainingTypesFilePath, objectMapper, TrainingType.class);
-        for (TrainingType trainingType : trainingTypes) {
-            trainingTypeMap.put(trainingType.getId(), trainingType);
-            if (trainingType.getId() >= nextTrainingTypeId) {
-                nextTrainingTypeId = trainingType.getId() + 1;
-            }
-        }
-
-        // Load and map User objects from the JSON file
-        List<User> users = loadJsonList(usersFilePath, objectMapper, User.class);
-        for (User user : users) {
-            userMap.put(user.getId(), user);
-            if (user.getId() >= nextUserId) {
-                nextUserId = user.getId() + 1;
-            }
-        }
         logger.info("Storage initialized");
     }
 
+    // Helper method to load and deserialize a JSON file into a map of objects
+    public <T> void initializeJsonData(String filePath, ObjectMapper objectMapper, Class<T> valueType, Map<Integer, T> dataMap, int nextId) throws IOException {
+        List<T> jsonData = loadJsonList(filePath, objectMapper, valueType);
+        for (T data : jsonData) {
+            Method method;
+            try {
+                method = valueType.getMethod("getId");
+                Integer id = (Integer) method.invoke(data);
+                dataMap.put(id, data);
+                if (id >= nextId) {
+                    nextId = id + 1;
+                }
+            } catch (Exception e) {
+                logger.warning("Exception occurred while initializing JSON data: " + e.getMessage());
+            }
+        }
+    }
     // Method to load and deserialize a JSON file into a list of objects
     private <T> List<T> loadJsonList(String filePath, ObjectMapper objectMapper, Class<T> valueType) throws IOException {
         File file = new File(filePath);

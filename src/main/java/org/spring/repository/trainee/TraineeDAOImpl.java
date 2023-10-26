@@ -19,7 +19,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     public int save(Trainee trainee) {
-        int id = trainee.getID();
+        int id = trainee.getId();
         //Save trainee in storage
         storage.getTraineeMap().put(id, trainee);
         logger.info("Saving Trainee...");
@@ -27,7 +27,7 @@ public class TraineeDAOImpl implements TraineeDAO {
         if (storage.getTraineeMap().containsKey(id)) {
             //Trainee successfully saved
             logger.info("Trainee successfully saved with id: " + id);
-            return trainee.getID();
+            return trainee.getId();
         } else {
             //Throws an exception in case trainee is not found
             throw new RuntimeException("Error saving trainee");

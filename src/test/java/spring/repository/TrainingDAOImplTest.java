@@ -25,14 +25,14 @@ public class TrainingDAOImplTest {
     }
 
     @Test
-    public void saveTest(){
+    public void givenTraining_whenSave_thenShouldReturnSavedTrainingId(){
         Training training = new Training(8, "Running", new Date(), 1, 1, 20, 1);
         when(storage.getTrainingMap()).thenReturn(new HashMap<>());
         int saveTrainingId  = trainingDAO.save(training);
         assertEquals(8, saveTrainingId);
     }
     @Test
-    public void testGetTrainingById() {
+    public void givenTrainingMapWithTraining_whenGetTrainingById_thenShouldReturnTraining() {
         Training training = new Training(1, "Cardio Workout", new Date(), 1, 1, 60, 1);
         when(storage.getTrainingMap()).thenReturn(mock(Map.class));
         when(storage.getTrainingMap().get(1)).thenReturn(training);
@@ -42,13 +42,13 @@ public class TrainingDAOImplTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testGetTrainingByIdNotFound() {
+    public void givenEmptyTrainingMap_whenGetTrainingById_thenShouldThrowNoSuchElementException() {
         when(storage.getTrainingMap()).thenReturn(mock(Map.class));
         trainingDAO.getById(1);
     }
 
     @Test
-    public void testNextAvailableId() {
+    public void givenNextAvailableTrainingId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         when(storage.nextAvailableTrainingId()).thenReturn(1);
         int result = trainingDAO.nextAvailableId();
         assertEquals(1, result);

@@ -23,7 +23,7 @@ public class UserDAOImplTest {
     }
 
     @Test
-    public void saveTest() {
+    public void givenUser_whenSave_thenShouldReturnSavedUserId() {
         User user = new User(1, "John", "Doe", "John.Doe", "1234567890", true);
         when(storage.getUserMap()).thenReturn(new HashMap<>());
         int saveUserId = userDAO.save(user);
@@ -31,7 +31,7 @@ public class UserDAOImplTest {
     }
 
     @Test
-    public void testGetUserById() {
+    public void givenUserMapWithUser_whenGetUserById_thenShouldReturnUser() {
         User user = new User(1, "John", "Doe", "John.Doe", "password", true);
         when(storage.getUserMap()).thenReturn(mock(Map.class));
         when(storage.getUserMap().get(1)).thenReturn(user);
@@ -41,13 +41,13 @@ public class UserDAOImplTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testGetUserByIdNotFound() {
+    public void givenEmptyUserMap_whenGetUserById_thenShouldThrowNoSuchElementException() {
         when(storage.getUserMap()).thenReturn(mock(Map.class));
         userDAO.getById(1);
     }
 
     @Test
-    public void testRemoveByIdUserFound() {
+    public void givenUser_whenRemoveById_thenShouldReturnRemovedUser() {
 
         User user = new User(1, "John", "Doe", "John.Doe", "password", true);
         int userId = user.getId();
@@ -58,7 +58,7 @@ public class UserDAOImplTest {
     }
 
     @Test
-    public void testUsernameExists() {
+    public void givenUserMapWithUsers_whenUsernameExists_thenShouldReturnTrueIfExists() {
         User user1 = new User(1, "John", "Doe", "John.Doe", "password", true);
         User user2 = new User(2, "Alice", "Smith", "Alice.Smith", "password", true);
         when(storage.getUserMap()).thenReturn(new HashMap<>());
@@ -71,7 +71,7 @@ public class UserDAOImplTest {
     }
 
     @Test
-    public void testNextAvailableId() {
+    public void givenNextAvailableUserId_whenNextAvailableId_thenShouldReturnNextAvailableId() {
         when(storage.nextAvailableUserId()).thenReturn(1);
         int result = userDAO.nextAvailableId();
         assertEquals(1, result);

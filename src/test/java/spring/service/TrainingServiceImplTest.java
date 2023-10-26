@@ -39,7 +39,7 @@ public class TrainingServiceImplTest {
     }
 
     @Test
-    public void testCreateTraining() {
+    public void givenValidTrainingData_whenCreateTraining_thenTrainingIsCreated() {
         String trainingName = "Java Programming";
         Date trainingDate = new Date(System.currentTimeMillis() + 3600000); // Set the date 1 hour in the future
         int traineeId = 1;
@@ -56,7 +56,7 @@ public class TrainingServiceImplTest {
     }
 
     @Test
-    public void testCreateTrainingWithInvalidData() {
+    public void givenInvalidTrainingData_whenCreateTraining_thenShouldThrow() {
         String trainingName = "X";
         Date trainingDate = new Date(System.currentTimeMillis() - 3600000); // Set the date 1 hour in the past
         int traineeId = 1;
@@ -71,11 +71,11 @@ public class TrainingServiceImplTest {
     }
 
     @Test
-    public void testGetTrainingById() {
+    public void givenTrainingId_whenGetTrainingById_thenTrainingIsRetrieved() {
         int trainingId = 1;
         Training training = new Training(trainingId, "Java Programming", new Date(), 1, 2, 60, 3);
         when(trainingDAO.getById(trainingId)).thenReturn(training);
         Training retrievedTraining = trainingService.getTrainingById(trainingId);
-        assertEquals(trainingId, retrievedTraining.getid());
+        assertEquals(trainingId, retrievedTraining.getId());
     }
 }

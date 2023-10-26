@@ -20,7 +20,7 @@ public class TrainingDAOImpl implements TrainingDAO {
 
     @Override
     public int save(Training training) {
-        int id = training.getid();
+        int id = training.getId();
         //Save training in storage
         storage.getTrainingMap().put(id, training);
         logger.info("Saving Training...");
@@ -28,7 +28,7 @@ public class TrainingDAOImpl implements TrainingDAO {
         if (storage.getTrainingMap().containsKey(id)) {
             //Training successfully saved
             logger.info("Training successfully saved with id: " + id);
-            return training.getid();
+            return training.getId();
         } else {
             //-1 means error saving Training
             logger.info("Error saving Training");

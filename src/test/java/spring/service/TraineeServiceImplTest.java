@@ -34,7 +34,7 @@ public class TraineeServiceImplTest {
     }
 
     @Test
-    public void testCreateTrainee() {
+    public void givenValidNameAndLastName_whenCreateTrainee_thenTraineeIsCreated() {
         String name = "John";
         String lastName = "Doe";
         Date dateOfBirth = new Date();
@@ -50,7 +50,7 @@ public class TraineeServiceImplTest {
     }
 
     @Test
-    public void testUpdateTrainee() {
+    public void givenTraineeIdAndDetails_whenUpdateTrainee_thenTraineeIsUpdated() {
         int traineeId = 1;
         Date dateOfBirth = new Date();
         String address = "456 Elm St";
@@ -62,7 +62,7 @@ public class TraineeServiceImplTest {
     }
 
     @Test
-    public void testDeleteTrainee() {
+    public void givenTraineeId_whenDeleteTrainee_thenTraineeIsDeleted() {
         int traineeId = 1;
         int userId = 123;
         Trainee trainee = new Trainee(1, new Date(), "Address", 123);
@@ -74,11 +74,11 @@ public class TraineeServiceImplTest {
     }
 
     @Test
-    public void testGetTraineeById() {
+    public void givenTraineeId_whenGetTraineeById_thenTraineeIsRetrieved() {
         int traineeId = 1;
         Trainee trainee = new Trainee(traineeId, new Date(), "123 Main St", 1);
         when(traineeDAO.getById(traineeId)).thenReturn(trainee);
         Trainee retrievedTrainee = traineeService.getTraineeById(traineeId);
-        assertEquals(traineeId, retrievedTrainee.getID());
+        assertEquals(traineeId, retrievedTrainee.getId());
     }
 }

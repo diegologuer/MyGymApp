@@ -39,48 +39,72 @@ public class FacadeImplTest {
 
     // Trainee methods tests
     @Test
-    public void testCreateTrainee() {
+
+    public void givenValidArgs_whenCreateTrainee_thenIsCreated() {
+        //Arrange
         int traineeId = 1;
         Mockito.when(traineeService.createTrainee(Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString()))
                 .thenReturn(traineeId);
+
+        //Act
         int createdTraineeId = facade.createTrainee("John", "Doe", new Date(), "Address");
+
+        //Assert
         assertEquals(traineeId, createdTraineeId);
     }
 
     @Test
-    public void testUpdateTrainee() {
+    public void givenValidArgs_whenUpdateTrainee_thenIsUpdated() {
+        // Arrange
         Trainee updatedTrainee = new Trainee(1, new Date(), "New Address", 1);
         Mockito.when(traineeService.updateTrainee(1, new Date(), "New Address")).thenReturn(updatedTrainee);
+
+        // Act
         Trainee result = facade.updateTrainee(1, new Date(), "New Address");
+
+        // Assert
         assertEquals(updatedTrainee, result);
     }
 
     @Test
-    public void testDeleteTrainee() {
+    public void givenValidArgs_whenDeleteTrainee_thenIsDeleted() {
+        // Arrange
         Trainee deletedTrainee = new Trainee(1, new Date(), "123 Gym St, Fitness City", 1);
         Mockito.when(traineeService.deleteTrainee(1)).thenReturn(deletedTrainee);
+
+        // Act
         Trainee result = facade.deleteTrainee(1);
+
+        // Assert
         assertEquals(deletedTrainee, result);
     }
 
     @Test
-    public void testGetTraineeById() {
+    public void givenValidArgs_whenGetTraineeById_thenShouldReturnTrainee() {
+        // Arrange
         Trainee trainee = new Trainee(1, new Date(), "123 Gym St, Fitness City", 1);
         Mockito.when(traineeService.getTraineeById(1)).thenReturn(trainee);
+
+        // Act
         Trainee result = facade.getTraineeById(1);
+
+        // Assert
         assertEquals(trainee, result);
     }
 
     // Trainer methods tests
     @Test
-    public void testCreateTrainer() {
+    public void givenValidArgs_whenCreateTrainer_thenShouldReturnTrainerId() {
+        //Arrange
         Mockito.when(trainerService.createTrainer("John", "Doe", 2)).thenReturn(1);
+
+
         int result = facade.createTrainer("John", "Doe", 2);
         assertEquals(1, result);
     }
 
     @Test
-    public void testUpdateTrainer() {
+    public void givenValidArgs_whenUpdateTrainer_thenShouldReturnUpdatedTrainer() {
         Trainer updatedTrainer = new Trainer(1, 4, 2);
         Mockito.when(trainerService.updateTrainer(1, 2)).thenReturn(updatedTrainer);
         Trainer result = facade.updateTrainer(1, 2);
@@ -88,7 +112,7 @@ public class FacadeImplTest {
     }
 
     @Test
-    public void testGetTrainerById() {
+    public void givenValidArgs_whenGetTrainerById_thenShouldReturnTrainer() {
         Trainer trainer = new Trainer(1, 4, 2);
         Mockito.when(trainerService.getTrainerById(1)).thenReturn(trainer);
         Trainer result = facade.getTrainerById(1);
@@ -97,7 +121,7 @@ public class FacadeImplTest {
 
     //Trainer test methods
     @Test
-    public void testCreateTraining() {
+    public void givenValidArgs_whenCreateTraining_thenShouldReturnTrainingId() {
         String trainingName = "Training Name";
         Date trainingDate = new Date();
         int traineeId = 1;
@@ -113,7 +137,7 @@ public class FacadeImplTest {
     }
 
     @Test
-    public void testGetTrainingById() {
+    public void givenValidArgs_whenGetTrainingById_thenShouldReturnTraining() {
         Training training = new Training(1, "Cardio Kickboxing Class", new Date(), 1, 2, 60, 1);
         Mockito.when(trainingService.getTrainingById(1)).thenReturn(training);
         Training result = facade.getTrainingById(1);
