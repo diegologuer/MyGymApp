@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 @Repository
 public class TraineeDAOImpl implements TraineeDAO {
     private final Storage storage;
-    private static final Logger logger = Logger.getLogger(TraineeDAOImpl.class.getName());
+    private static final Logger logger = Logger.getLogger(TraineeDAO.class.getName());
 
     @Autowired
     public TraineeDAOImpl(Storage storage) {

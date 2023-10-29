@@ -21,7 +21,8 @@ public class TrainingServiceImpl implements TrainingService {
     private static final Logger logger = Logger.getLogger(TrainingServiceImpl.class.getName());
 
     @Autowired
-    public TrainingServiceImpl(TrainingTypeDAO trainingTypeDAO, TrainingDAO trainingDAO, TraineeDAO traineeDAO, TrainerDAO trainerDAO) {
+    public TrainingServiceImpl(TrainingTypeDAO trainingTypeDAO, TrainingDAO trainingDAO,
+                               TraineeDAO traineeDAO, TrainerDAO trainerDAO) {
         this.trainingTypeDAO = trainingTypeDAO;
         this.trainingDAO = trainingDAO;
         this.traineeDAO = traineeDAO;

@@ -2,6 +2,7 @@ package org.spring.service.trainer;
 
 
 import org.spring.model.Trainer;
+import org.spring.repository.trainer.TrainerDAO;
 import org.spring.repository.trainer.TrainerDAOImpl;
 import org.spring.repository.trainingType.TrainingTypeDAO;
 import org.spring.repository.user.UserDAOImpl;
@@ -15,15 +16,15 @@ import java.util.logging.Logger;
 public class TrainerServiceImpl implements TrainerService {
 
 
-    private final TrainerDAOImpl trainerDAOImpl;
+    private final TrainerDAO trainerDAO;
     private final CredentialsService credentialsService;
     private final TrainingTypeDAO trainingTypeDAO;
     private static final Logger logger = Logger.getLogger(TrainerServiceImpl.class.getName());
 
     @Autowired
-    public TrainerServiceImpl(TrainerDAOImpl trainerDAOImpl, CredentialsService credentialsService,
-                              UserDAOImpl userDAOImpl, TrainingTypeDAO trainingTypeDAO) {
-        this.trainerDAOImpl = trainerDAOImpl;
+    public TrainerServiceImpl(TrainerDAO trainerDAO, CredentialsService credentialsService,
+                              TrainingTypeDAO trainingTypeDAO) {
+        this.trainerDAO = trainerDAO;
         this.credentialsService = credentialsService;
         this.trainingTypeDAO = trainingTypeDAO;
     }
@@ -35,10 +36,10 @@ public class TrainerServiceImpl implements TrainerService {
         int userId = credentialsService.createPersonProfile(name, lastname);
 
         //Assigning available IDs
-        int trainerId = trainerDAOImpl.nextAvailableId();
+        int trainerId = trainerDAO.nextAvailableId();
 
         //Return the ID number of the created Trainee
-        return trainerDAOImpl.save(new Trainer(trainerId, userId, specialization));
+        return trainerDAO.save(new Trainer(trainerId, userId, specialization));
     }
 
     @Override
@@ -47,14 +48,14 @@ public class TrainerServiceImpl implements TrainerService {
         trainingTypeDAO.getById(specialization);
 
         //Search fot trainer
-        Trainer trainer = trainerDAOImpl.getById(trainerId);
+        Trainer trainer = trainerDAO.getById(trainerId);
 
         logger.info("Setting new data...");
         //Set new specialization
         trainer.setSpecialization(specialization);
 
         //Save trainer
-        trainerDAOImpl.save(trainer);
+        trainerDAO.save(trainer);
         logger.info("Trainee updated");
         return trainer;
     }
@@ -63,7 +64,7 @@ public class TrainerServiceImpl implements TrainerService {
     public Trainer getTrainerById(int trainerId) {
 
         logger.info("Trainee redeemed");
-        return trainerDAOImpl.getById(trainerId);
+        return trainerDAO.getById(trainerId);
     }
 }
 
