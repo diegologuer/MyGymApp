@@ -15,137 +15,137 @@ class UserTest {
     }
 
     @Test
-    void getUserId() {
-        // Act
+    void whenGettingUserIdThenUserIdIsReturned() {
+        // When
         int actualUserId = sut.getId();
 
-        // Assert
+        // Then
         assertEquals(1, actualUserId);
     }
 
     @Test
-    void setUserId() {
-        // Arrange
+    void whenSettingUserIdThenUserIdIsSet() {
+        // Given
         int expectedUserId = 123;
 
-        // Act
+        // When
         sut.setId(expectedUserId);
 
-        // Assert
+        // Then
         assertEquals(expectedUserId, sut.getId());
     }
 
     @Test
-    void getFirstName() {
-        // Act
+    void whenGettingFirstNameThenFirstNameIsReturned() {
+        // When
         String actualFirstName = sut.getFirstName();
 
-        // Assert
+        // Then
         assertEquals("John", actualFirstName);
     }
 
     @Test
-    void setFirstName() {
-        // Arrange
+    void whenSettingFirstNameThenFirstNameIsSet() {
+        // Given
         String expectedFirstName = "Jane";
 
-        // Act
+        // When
         sut.setFirstName(expectedFirstName);
 
-        // Assert
+        // Then
         assertEquals(expectedFirstName, sut.getFirstName());
     }
 
     @Test
-    void getLastName() {
-        // Act
+    void whenGettingLastNameThenLastNameIsReturned() {
+        // When
         String actualLastName = sut.getLastName();
 
-        // Assert
+        // Then
         assertEquals("Doe", actualLastName);
     }
 
     @Test
-    void setLastName() {
-        // Arrange
+    void whenSettingLastNameThenLastNameIsSet() {
+        // Given
         String expectedLastName = "Smith";
 
-        // Act
+        // When
         sut.setLastName(expectedLastName);
 
-        // Assert
+        // Then
         assertEquals(expectedLastName, sut.getLastName());
     }
 
     @Test
-    void getUsername() {
-        // Act
+    void whenGettingUsernameThenUsernameIsReturned() {
+        // When
         String actualUsername = sut.getUsername();
 
-        // Assert
+        // Then
         assertEquals("john_doe", actualUsername);
     }
 
     @Test
-    void setUsername() {
-        // Arrange
+    void whenSettingUsernameThenUsernameIsSet() {
+        // Given
         String expectedUsername = "jane_smith";
 
-        // Act
+        // When
         sut.setUsername(expectedUsername);
 
-        // Assert
+        // Then
         assertEquals(expectedUsername, sut.getUsername());
     }
 
     @Test
-    void getPassword() {
-        // Act
+    void whenGettingPasswordThenPasswordIsReturned() {
+        // When
         String actualPassword = sut.getPassword();
 
-        // Assert
+        // Then
         assertEquals("password123", actualPassword);
     }
 
     @Test
-    void setPassword() {
-        // Arrange
+    void whenSettingPasswordThenPasswordIsSet() {
+        // Given
         String expectedPassword = "new_password";
 
-        // Act
+        // When
         sut.setPassword(expectedPassword);
 
-        // Assert
+        // Then
         assertEquals(expectedPassword, sut.getPassword());
     }
 
     @Test
-    void getIsActive() {
-        // Act
+    void whenGettingIsActiveThenIsActiveIsReturned() {
+        // When
         boolean actualIsActive = sut.getIsActive();
 
-        // Assert
+        // Then
         assertEquals(true, actualIsActive);
     }
 
     @Test
-    void setIsActive() {
-        // Act
+    void whenSettingIsActiveThenIsActiveIsSet() {
+        // When
         sut.setIsActive(false);
 
-        // Assert
+        // Then
         assertEquals(false, sut.getIsActive());
     }
 
     @Test
-    void testUserToString() {
-        // Arrange
+    void whenCallingUserToStringThenCorrectStringIsReturned() {
+        // Given
         String expectedToString = "User{id=1, firstName='John', lastName='Doe', username='john_doe', password='password123', isActive=true}";
 
-        // Act
+        // When
         String actualToString = sut.toString();
 
-        // Assert
+        // Then
         assertEquals(expectedToString, actualToString);
     }
 }

@@ -49,6 +49,9 @@ class TrainerServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainerId, actualTrainerId);
+        verify(credentialsService).createPersonProfile(name,lastname);
+        verify(trainerDAO).nextAvailableId();
+        verify(trainerDAO).save(any(Trainer.class));
     }
 
     @Test
@@ -75,6 +78,7 @@ class TrainerServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainer, actualTrainer);
+        verify(trainerDAO).getById(trainerId);
     }
 
     @Test
@@ -89,6 +93,7 @@ class TrainerServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainer, actualTrainer);
+        verify(trainerDAO).getById(trainerId);
     }
 
 

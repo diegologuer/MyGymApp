@@ -15,6 +15,7 @@ import org.spring.service.training.TrainingService;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,12 +32,12 @@ class FacadeImplTest {
     private FacadeImpl sut;
 
     @Test
-    void createTrainee() {
+    void givenValidArgs_WhenCreatingTrainee_ThenTraineeIsCreated() {
         //Arrange
         int expectedTraineeId = 3;
         String name = "John";
         String lastname = "Doe";
-        Date dateOfBirth = new Date(99, 11,7);
+        Date dateOfBirth = new Date(99, 11, 7);
         String address = "123 Main St";
         when(traineeService.createTrainee(name, lastname, dateOfBirth, address))
                 .thenReturn(expectedTraineeId);
@@ -46,10 +47,11 @@ class FacadeImplTest {
 
         //Assert
         assertEquals(expectedTraineeId, actualTraineeId);
+        verify(traineeService).createTrainee(name, lastname, dateOfBirth, address);
     }
 
     @Test
-    void updateTrainee() {
+    void givenValidArgs_WhenUpdatingTrainee_ThenTraineeIsUpdated() {
         // Arrange
         int traineeId = 1;
         Date dateOfBirth = new Date(95, 1, 7);
@@ -65,13 +67,14 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeService).updateTrainee(traineeId, dateOfBirth, address);
     }
 
     @Test
-    void deleteTrainee() {
+    void givenValidArgs_WhenDeletingTrainee_ThenTraineeIsDeleted() {
         // Arrange
         int traineeId = 1;
-        Trainee expectedTrainee = new Trainee(1, new Date(74,4,24), "12 Main St", 3);
+        Trainee expectedTrainee = new Trainee(1, new Date(74, 4, 24), "12 Main St", 3);
 
         when(traineeService.deleteTrainee(traineeId))
                 .thenReturn(expectedTrainee);
@@ -81,13 +84,14 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeService).deleteTrainee(traineeId);
     }
 
     @Test
-    void getTraineeById() {
+    void givenValidId_WhenGettingTraineeById_ThenTraineeIsReturned() {
         // Arrange
         int traineeId = 1;
-        Trainee expectedTrainee = new Trainee(1, new Date(74,4,24), "12 Main St", 3);
+        Trainee expectedTrainee = new Trainee(1, new Date(74, 4, 24), "12 Main St", 3);
 
         when(traineeService.getTraineeById(traineeId))
                 .thenReturn(expectedTrainee);
@@ -97,10 +101,11 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeService).getTraineeById(traineeId);
     }
 
     @Test
-    void createTrainer() {
+    void givenValidArgs_WhenCreatingTrainer_ThenTrainerIsReturned() {
         // Arrange
         int expectedTrainerId = 2;
         String name = "Trainer";
@@ -115,11 +120,12 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainerId, actualTrainerId);
+        verify(trainerService).createTrainer(name, lastname, specialization);
     }
 
 
     @Test
-    void updateTrainer() {
+    void givenValidArgs_WhenUpdatingTrainer_ThenTrainerIsUpdated() {
         // Arrange
         int trainerId = 1;
         int specialization = 4;
@@ -133,10 +139,11 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainer, actualTrainer);
+        verify(trainerService).updateTrainer(trainerId, specialization);
     }
 
     @Test
-    void getTrainerById() {
+    void givenValidId_WhenGettingTrainerById_ThenTrainerIsReturned() {
         // Arrange
         int trainerId = 1;
         Trainer expectedTrainer = new Trainer(trainerId, 4, 5);
@@ -149,10 +156,11 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainer, actualTrainer);
+        verify(trainerService).getTrainerById(trainerId);
     }
 
     @Test
-    void createTraining() {
+    void givenValidArgs_WhenCreatingTraining_ThenTrainingIsCreated() {
         // Arrange
         int expectedTrainingId = 5;
         String trainingName = "Spinning";
@@ -170,10 +178,11 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTrainingId, actualTrainingId);
+        verify(trainingService).createTraining(trainingName, trainingDate, traineeId, trainingTypeId, trainingDuration, trainerId);
     }
 
     @Test
-    void getTrainingById() {
+    void givenValidId_WhenGettingTrainingById_ThenTrainingIsReturned() {
         // Arrange
         int trainingId = 5;
         Training expectedTraining = new Training(trainingId, "KickBoxing Training", new Date(123, 3, 15), 1, 2, 35, 1);
@@ -186,5 +195,6 @@ class FacadeImplTest {
 
         // Assert
         assertEquals(expectedTraining, actualTraining);
+        verify(trainingService).getTrainingById(trainingId);
     }
 }

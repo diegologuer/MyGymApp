@@ -17,163 +17,164 @@ class TrainingTest {
         sut = new Training(1, "Strength Training", trainingDate, 3, 2, 10, 5);
     }
 
+
     @Test
-    void getTrainingId() {
-        // Act
+    void whenGettingTrainingIdThenTrainingIdIsReturned() {
+        // When
         int actualTrainingId = sut.getId();
 
-        // Assert
+        // Then
         assertEquals(1, actualTrainingId);
     }
 
     @Test
-    void setTrainingId() {
-        // Arrange
+    void whenSettingTrainingIdThenTrainingIdIsSet() {
+        // Given
         int expectedTrainingId = 123;
 
-        // Act
+        // When
         sut.setid(expectedTrainingId);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingId, sut.getId());
     }
 
     @Test
-    void getTrainingName() {
-        // Act
+    void whenGettingTrainingNameThenTrainingNameIsReturned() {
+        // When
         String actualTrainingName = sut.getTrainingName();
 
-        // Assert
+        // Then
         assertEquals("Strength Training", actualTrainingName);
     }
 
     @Test
-    void setTrainingName() {
-        // Arrange
+    void whenSettingTrainingNameThenTrainingNameIsSet() {
+        // Given
         String expectedTrainingName = "Cardio Workout";
 
-        // Act
+        // When
         sut.setTrainingName(expectedTrainingName);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingName, sut.getTrainingName());
     }
 
     @Test
-    void getTrainingDate() {
-        // Act
+    void whenGettingTrainingDateThenTrainingDateIsReturned() {
+        // When
         Date actualTrainingDate = sut.getTrainingDate();
 
-        // Assert
+        // Then
         assertEquals(new Date(122, 10, 1), actualTrainingDate);
     }
 
     @Test
-    void setTrainingDate() {
-        // Arrange
+    void whenSettingTrainingDateThenTrainingDateIsSet() {
+        // Given
         Date expectedTrainingDate = new Date(123, 0, 15);
 
-        // Act
+        // When
         sut.setTrainingDate(expectedTrainingDate);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingDate, sut.getTrainingDate());
     }
 
     @Test
-    void getTraineeId() {
-        // Act
+    void whenGettingTraineeIdThenTraineeIdIsReturned() {
+        // When
         int actualTraineeId = sut.getTraineeId();
 
-        // Assert
+        // Then
         assertEquals(3, actualTraineeId);
     }
 
     @Test
-    void setTraineeId() {
-        // Arrange
+    void whenSettingTraineeIdThenTraineeIdIsSet() {
+        // Given
         int expectedTraineeId = 4;
 
-        // Act
+        // When
         sut.setTraineeId(expectedTraineeId);
 
-        // Assert
+        // Then
         assertEquals(expectedTraineeId, sut.getTraineeId());
     }
 
     @Test
-    void getTrainingTypeId() {
-        // Act
+    void whenGettingTrainingTypeIdThenTrainingTypeIdIsReturned() {
+        // When
         int actualTrainingTypeId = sut.getTrainingTypeId();
 
-        // Assert
+        // Then
         assertEquals(2, actualTrainingTypeId);
     }
 
     @Test
-    void setTrainingTypeId() {
-        // Arrange
+    void whenSettingTrainingTypeIdThenTrainingTypeIdIsSet() {
+        // Given
         int expectedTrainingTypeId = 3;
 
-        // Act
+        // When
         sut.setTrainingTypeId(expectedTrainingTypeId);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingTypeId, sut.getTrainingTypeId());
     }
 
     @Test
-    void getTrainingDuration() {
-        // Act
+    void whenGettingTrainingDurationThenTrainingDurationIsReturned() {
+        // When
         int actualTrainingDuration = sut.getTrainingDuration();
 
-        // Assert
+        // Then
         assertEquals(10, actualTrainingDuration);
     }
 
     @Test
-    void setTrainingDuration() {
-        // Arrange
+    void whenSettingTrainingDurationThenTrainingDurationIsSet() {
+        // Given
         int expectedTrainingDuration = 15;
 
-        // Act
+        // When
         sut.setTrainingDuration(expectedTrainingDuration);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingDuration, sut.getTrainingDuration());
     }
 
     @Test
-    void getTrainerId() {
-        // Act
+    void whenGettingTrainerIdThenTrainerIdIsReturned() {
+        // When
         int actualTrainerId = sut.getTrainerId();
 
-        // Assert
+        // Then
         assertEquals(5, actualTrainerId);
     }
 
     @Test
-    void setTrainerId() {
-        // Arrange
+    void whenSettingTrainerIdThenTrainerIdIsSet() {
+        // Given
         int expectedTrainerId = 8;
 
-        // Act
+        // When
         sut.setTrainerId(expectedTrainerId);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainerId, sut.getTrainerId());
     }
 
     @Test
-    void testTrainingToString() {
-        // Arrange
+    void whenCallingTrainingToStringThenCorrectStringIsReturned() {
+        // Given
         String expectedToString = "Training{id=1, trainingName='Strength Training', trainingDate=" + sut.getTrainingDate() +
                 ", traineeId=3, trainingTypeId=2, trainingDuration=10, trainerId=5}";
 
-        // Act
+        // When
         String actualToString = sut.toString();
 
-        // Assert
+        // Then
         assertEquals(expectedToString, actualToString);
     }
 }

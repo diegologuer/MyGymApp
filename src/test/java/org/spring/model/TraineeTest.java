@@ -18,104 +18,102 @@ class TraineeTest {
     }
 
     @Test
-    void whenGettingId_IdIsReturned() {
-        //Act
+    void whenGettingIdThenIdIsReturned() {
+        // When
         int actualId = sut.getId();
 
-        //Assert
+        // Then
         assertEquals(1, actualId);
     }
 
     @Test
-    void whenSettingId_IdIsSet() {
-        //Arrange
+    void whenSettingIdThenIdIsSet() {
+        // Given
         int expectedId = 123;
 
-        //Act
+        // When
         sut.setId(expectedId);
 
-        //Assert
+        // Then
         assertEquals(expectedId, sut.getId());
     }
 
     @Test
-    void getDateOfBirth() {
-        //Arrange
+    void whenGettingDateOfBirthThenDateOfBirthIsReturned() {
+        // Given
         Date expectedDate = new Date(85, 5, 11);
 
-        //Act
+        // When
         Date actualDate = sut.getDateOfBirth();
 
-        //Assert
+        // Then
         assertEquals(expectedDate, actualDate);
     }
 
     @Test
-    void setDateOfBirth() {
-        //Arrange
+    void whenSettingDateOfBirthThenDateOfBirthIsSet() {
+        // Given
         Date expectedDate = new Date(88, 3, 1);
 
-        //Act
+        // When
         sut.setDateOfBirth(expectedDate);
 
-        //Assert
+        // Then
         assertEquals(expectedDate, sut.getDateOfBirth());
-
     }
 
     @Test
-    void getAddress() {
-        //Act
+    void whenGettingAddressThenAddressIsReturned() {
+        // When
         String actualAddress = sut.getAddress();
 
-        //Assert
+        // Then
         assertEquals("123 Main St", actualAddress);
     }
 
     @Test
-    void setAddress() {
-        //Arrange
+    void whenSettingAddressThenAddressIsSet() {
+        // Given
         String expectedAddress = "45 Muscle Avenue";
 
-        //Act
+        // When
         sut.setAddress(expectedAddress);
 
-        //Assert
+        // Then
         assertEquals(expectedAddress, sut.getAddress());
     }
 
     @Test
-    void getUserId() {
-        //Act
+    void whenGettingUserIdThenUserIdIsReturned() {
+        // When
         int actualUserId = sut.getUserId();
 
-        //Assert
+        // Then
         assertEquals(4, actualUserId);
     }
 
     @Test
-    void setUserId() {
-        //Arrange
+    void whenSettingUserIdThenUserIdIsSet() {
+        // Given
         int expectedUserId = 24;
 
-        //Act
+        // When
         sut.setUserId(expectedUserId);
 
-        //Assert
+        // Then
         assertEquals(expectedUserId, sut.getUserId());
-
     }
 
     @Test
-    void testToString() {
-        //Arrange
+    void whenCallingToStringThenCorrectStringIsReturned() {
+        // Given
         String expectedToString = "Trainee{id=1, dateOfBirth=" + sut.getDateOfBirth() +
                 ", address='123 Main St', userId=4}";
 
-        //Act
+        // When
         String actualToString = sut.toString();
 
-        //Assert
+        // Then
         assertEquals(expectedToString, actualToString);
     }
 }

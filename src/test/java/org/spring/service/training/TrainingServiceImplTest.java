@@ -14,6 +14,7 @@ import org.spring.repository.trainingType.TrainingTypeDAO;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -53,6 +54,8 @@ class TrainingServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainingId, actualTrainingId);
+        verify(trainingDAO).nextAvailableId();
+        verify(trainingDAO).save(expectedTraining);
     }
 
     @Test
@@ -76,5 +79,6 @@ class TrainingServiceImplTest {
 
         //Assert
         assertEquals(expectedTraining, actualTraining);
+        verify(trainingDAO).getById(trainingId);
     }
 }

@@ -11,6 +11,7 @@ import org.spring.repository.user.UserDAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -35,6 +36,7 @@ class CredentialsServiceImplTest {
 
         //Assert
         assertEquals(expectedUsername, actualUsername);
+        verify(userDAO).usernameExists(expectedUsername);
     }
 
     @Test
@@ -52,6 +54,8 @@ class CredentialsServiceImplTest {
 
         //Assert
         assertEquals(expectedUsername, actualUsername);
+        verify(userDAO).usernameExists(existingUsername);
+        verify(userDAO).usernameExists(expectedUsername);
     }
 
     @Test
@@ -82,7 +86,7 @@ class CredentialsServiceImplTest {
         String name = "John";
         String lastname = "Doe";
         int expectedUserId = 17;
-        when(userDAO.usernameExists(any())).thenReturn(false);
+        when(userDAO.usernameExists("John.Doe")).thenReturn(false);
         when(userDAO.nextAvailableId()).thenReturn(expectedUserId);
 
         //Act
@@ -90,6 +94,8 @@ class CredentialsServiceImplTest {
 
         //Assert
         assertEquals(expectedUserId, actualUserId);
+        verify(userDAO).nextAvailableId();
+        verify(userDAO).usernameExists("John.Doe");
     }
 
     @Test

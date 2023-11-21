@@ -15,56 +15,56 @@ class TrainingTypeTest {
     }
 
     @Test
-    void getTrainingTypeId() {
-        // Act
+    void whenGettingTrainingTypeIdThenTrainingTypeIdIsReturned() {
+        // When
         int actualTrainingTypeId = sut.getId();
 
-        // Assert
+        // Then
         assertEquals(1, actualTrainingTypeId);
     }
 
     @Test
-    void setTrainingTypeId() {
-        // Arrange
+    void whenSettingTrainingTypeIdThenTrainingTypeIdIsSet() {
+        // Given
         int expectedTrainingTypeId = 123;
 
-        // Act
+        // When
         sut.setId(expectedTrainingTypeId);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingTypeId, sut.getId());
     }
 
     @Test
-    void getTrainingTypeName() {
-        // Act
+    void whenGettingTrainingTypeNameThenTrainingTypeNameIsReturned() {
+        // When
         String actualTrainingTypeName = sut.getTrainingTypeName();
 
-        // Assert
+        // Then
         assertEquals("Cardio", actualTrainingTypeName);
     }
 
     @Test
-    void setTrainingTypeName() {
-        // Arrange
+    void whenSettingTrainingTypeNameThenTrainingTypeNameIsSet() {
+        // Given
         String expectedTrainingTypeName = "Strength";
 
-        // Act
+        // When
         sut.setTrainingTypeName(expectedTrainingTypeName);
 
-        // Assert
+        // Then
         assertEquals(expectedTrainingTypeName, sut.getTrainingTypeName());
     }
 
     @Test
-    void testTrainingTypeToString() {
-        // Arrange
+    void whenCallingTrainingTypeToStringThenCorrectStringIsReturned() {
+        // Given
         String expectedToString = "TrainingType{id=1, trainingTypeName='Cardio'}";
 
-        // Act
+        // When
         String actualToString = sut.toString();
 
-        // Assert
+        // Then
         assertEquals(expectedToString, actualToString);
     }
 }

@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TrainerDAOImplTest {
@@ -38,6 +38,7 @@ class TrainerDAOImplTest {
 
         // Assert
         assertEquals(expectedTrainerId, actualTrainerId);
+        verify(storage, times(2)).getTrainerMap();
     }
 
     @Test
@@ -60,6 +61,7 @@ class TrainerDAOImplTest {
 
         // Assert
         assertEquals(expectedTrainer, actualTrainer);
+        verify(storage).getTrainerMap();
     }
 
     @Test
@@ -83,5 +85,6 @@ class TrainerDAOImplTest {
 
         // Assert
         assertEquals(expectedAvailableId, actualAvailableId);
+        verify(storage).nextAvailableTrainerId();
     }
 }

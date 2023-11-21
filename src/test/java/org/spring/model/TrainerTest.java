@@ -14,78 +14,79 @@ class TrainerTest {
         sut = new Trainer(1, 5, 2);
     }
 
+
     @Test
-    void getId() {
-        // Act
+    void whenGettingIdThenIdIsReturned() {
+        // When
         int actualId = sut.getId();
 
-        // Assert
+        // Then
         assertEquals(1, actualId);
     }
 
     @Test
-    void setId() {
-        // Arrange
+    void whenSettingIdThenIdIsSet() {
+        // Given
         int expectedId = 123;
 
-        // Act
+        // When
         sut.setID(expectedId);
 
-        // Assert
+        // Then
         assertEquals(expectedId, sut.getId());
     }
 
     @Test
-    void getUserId() {
-        // Act
+    void whenGettingUserIdThenUserIdIsReturned() {
+        // When
         int actualUserId = sut.getUserId();
 
-        // Assert
+        // Then
         assertEquals(5, actualUserId);
     }
 
     @Test
-    void setUserId() {
-        // Arrange
+    void whenSettingUserIdThenUserIdIsSet() {
+        // Given
         int expectedUserId = 24;
 
-        // Act
+        // When
         sut.setUserId(expectedUserId);
 
-        // Assert
+        // Then
         assertEquals(expectedUserId, sut.getUserId());
     }
 
     @Test
-    void getSpecialization() {
-        // Act
+    void whenGettingSpecializationThenSpecializationIsReturned() {
+        // When
         int actualSpecialization = sut.getSpecialization();
 
-        // Assert
+        // Then
         assertEquals(2, actualSpecialization);
     }
 
     @Test
-    void setSpecialization() {
-        // Arrange
+    void whenSettingSpecializationThenSpecializationIsSet() {
+        // Given
         int expectedSpecialization = 3;
 
-        // Act
+        // When
         sut.setSpecialization(expectedSpecialization);
 
-        // Assert
+        // Then
         assertEquals(expectedSpecialization, sut.getSpecialization());
     }
 
     @Test
-    void testToString() {
-        // Arrange
+    void whenCallingToStringThenCorrectStringIsReturned() {
+        // Given
         String expectedToString = "Trainer{id=1, userId=5, specialization='2'}";
 
-        // Act
+        // When
         String actualToString = sut.toString();
 
-        // Assert
+        // Then
         assertEquals(expectedToString, actualToString);
     }
 }

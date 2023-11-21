@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserDAOImplTest {
@@ -42,6 +42,7 @@ class UserDAOImplTest {
         assertEquals(expectedUserId, actualUserId);
         assertTrue(userMap.containsKey(expectedUserId));
         assertEquals(user, userMap.get(expectedUserId));
+        verify(storage, times(2)).getUserMap();
     }
 
     @Test
@@ -65,6 +66,7 @@ class UserDAOImplTest {
 
         // Assert
         assertEquals(expectedUser, actualUser);
+        verify(storage).getUserMap();
     }
 
     @Test
@@ -93,6 +95,7 @@ class UserDAOImplTest {
         // Assert
         assertEquals(expectedUser, actualUser);
         assertFalse(userMap.containsKey(userId));
+        verify(storage, times(2)).getUserMap();
     }
 
     @Test
@@ -120,6 +123,7 @@ class UserDAOImplTest {
 
         // Assert
         assertTrue(result);
+        verify(storage).getUserMap();
     }
 
     @Test
@@ -133,6 +137,7 @@ class UserDAOImplTest {
 
         // Assert
         assertFalse(result);
+        verify(storage).getUserMap();
     }
 
     @Test
@@ -146,5 +151,6 @@ class UserDAOImplTest {
 
         // Assert
         assertEquals(expectedAvailableId, actualAvailableId);
+        verify(storage).nextAvailableUserId();
     }
 }

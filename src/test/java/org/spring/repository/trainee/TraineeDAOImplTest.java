@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TraineeDAOImplTest {
@@ -40,6 +40,7 @@ class TraineeDAOImplTest {
 
         //Assert
         assertEquals(expectedTraineeId, actualTraineeId);
+        verify(storage, times(2)).getTraineeMap();
     }
 
     @Test
@@ -62,6 +63,7 @@ class TraineeDAOImplTest {
 
         //Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(storage).getTraineeMap();
     }
 
     @Test
@@ -72,6 +74,7 @@ class TraineeDAOImplTest {
 
         //Act and Assert
         assertThrows(NoSuchElementException.class, () -> sut.getById(traineeId));
+        verify(storage).getTraineeMap();
     }
 
     @Test
@@ -88,6 +91,7 @@ class TraineeDAOImplTest {
 
         //Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(storage, times(2)).getTraineeMap();
     }
 
     @Test
@@ -98,6 +102,7 @@ class TraineeDAOImplTest {
 
         //Act and Assert
         assertThrows(NoSuchElementException.class, () -> sut.removeById(traineeId));
+        verify(storage).getTraineeMap();
     }
 
     @Test
@@ -111,5 +116,6 @@ class TraineeDAOImplTest {
 
         //Arrange
         assertEquals(expectedAvailaleId, actualAvailableId);
+        verify(storage).nextAvailableTraineeId();
     }
 }

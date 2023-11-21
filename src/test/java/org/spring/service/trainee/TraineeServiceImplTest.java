@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,6 +51,9 @@ class TraineeServiceImplTest {
 
         //Assert
         assertEquals(expectedId, actualId);
+        verify(credentialsService).createPersonProfile(name,lastname);
+        verify(traineeDAO).nextAvailableId();
+        verify(traineeDAO).save(expectedTrainee);
     }
 
     @Test
@@ -67,6 +71,7 @@ class TraineeServiceImplTest {
 
         // Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeDAO).getById(traineeId);
     }
 
     @Test
@@ -81,6 +86,7 @@ class TraineeServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeDAO).getById(traineeId);
     }
 
     @Test
@@ -95,6 +101,7 @@ class TraineeServiceImplTest {
 
         //Assert
         assertEquals(expectedTrainee, actualTrainee);
+        verify(traineeDAO).getById(traineeId);
     }
 
 }
