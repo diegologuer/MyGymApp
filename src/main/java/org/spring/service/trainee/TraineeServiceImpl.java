@@ -29,7 +29,11 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public int createTrainee(String name, String lastname, Date dateOfBirth, String address) {
 
-        //Generating user
+        // Validate dateOfBirth and address
+        validateDateOfBirth(dateOfBirth);
+        validateAddress(address);
+
+        //Generating user, name and lastname are validated in credentialService
         int userId = credentialsService.createPersonProfile(name, lastname);
 
         //Assigning available IDs
@@ -41,6 +45,9 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Override
     public Trainee updateTrainee(int traineeId, Date dateOfBirth, String address) {
+        // Validate dateOfBirth and address
+        validateDateOfBirth(dateOfBirth);
+        validateAddress(address);
 
         //Check trainee existence
         Trainee trainee = traineeDAO.getById(traineeId);
@@ -58,7 +65,7 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Override
     public Trainee deleteTrainee(int traineeId) {
-        //Search for the trainee
+        //Search for the trainee, this also validates if exists
         Trainee trainee = traineeDAO.getById(traineeId);
 
         //Search for userId assigned to trainee
@@ -78,6 +85,21 @@ public class TraineeServiceImpl implements TraineeService {
     public Trainee getTraineeById(int traineeId) {
         //Return specified trainee
         logger.info("Trainee redeemed");
+        //A validation occurs in traineeDao as well
         return traineeDAO.getById(traineeId);
+    }
+
+    private void validateDateOfBirth(Date dateOfBirth) {
+        // Perform your dateOfBirth validation logic
+        if (dateOfBirth == null || dateOfBirth.after(new Date())) {
+            throw new IllegalArgumentException("Invalid date of birth");
+        }
+    }
+
+    private void validateAddress(String address) {
+        // Perform your address validation logic
+        if (address == null || address.trim().isEmpty() || address.length() < 5) {
+            throw new IllegalArgumentException("Invalid address");
+        }
     }
 }

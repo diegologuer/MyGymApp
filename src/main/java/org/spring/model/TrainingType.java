@@ -1,6 +1,8 @@
 package org.spring.model;
 
 
+import java.util.Objects;
+
 public class TrainingType {
 
     private int id;
@@ -38,4 +40,13 @@ public class TrainingType {
                 ", trainingTypeName='" + trainingTypeName + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingType that = (TrainingType) o;
+        return id == that.id && Objects.equals(trainingTypeName, that.trainingTypeName);
+    }
+
 }

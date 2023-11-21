@@ -2,6 +2,7 @@ package org.spring.model;
 
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Trainee {
     private int id;
@@ -61,4 +62,13 @@ public class Trainee {
                 ", userId=" + userId +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trainee trainee = (Trainee) o;
+        return id == trainee.id && userId == trainee.userId && Objects.equals(dateOfBirth, trainee.dateOfBirth) && Objects.equals(address, trainee.address);
+    }
+
 }

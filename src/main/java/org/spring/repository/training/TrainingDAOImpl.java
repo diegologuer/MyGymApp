@@ -30,9 +30,7 @@ public class TrainingDAOImpl implements TrainingDAO {
             logger.info("Training successfully saved with id: " + id);
             return training.getId();
         } else {
-            //-1 means error saving Training
-            logger.info("Error saving Training");
-            return -1;
+            throw new RuntimeException("Error saving Training");
         }
     }
 

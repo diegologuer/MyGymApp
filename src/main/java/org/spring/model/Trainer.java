@@ -1,5 +1,7 @@
 package org.spring.model;
 
+import java.util.Objects;
+
 public class Trainer {
     private int id;
     private int userId;
@@ -48,4 +50,14 @@ public class Trainer {
                 ", specialization='" + specialization + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trainer trainer = (Trainer) o;
+        return id == trainer.id && userId == trainer.userId && specialization == trainer.specialization;
+    }
+
+
 }

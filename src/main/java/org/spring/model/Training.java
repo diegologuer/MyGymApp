@@ -1,6 +1,7 @@
 package org.spring.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Training {
     private int id;
@@ -93,4 +94,13 @@ public class Training {
                 ", trainerId=" + trainerId +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Training training = (Training) o;
+        return id == training.id && traineeId == training.traineeId && trainingTypeId == training.trainingTypeId && trainingDuration == training.trainingDuration && trainerId == training.trainerId && Objects.equals(trainingName, training.trainingName) && Objects.equals(trainingDate, training.trainingDate);
+    }
+
 }
